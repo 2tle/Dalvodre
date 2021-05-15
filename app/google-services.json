@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "724829241629",
+    "project_id": "today-kotlin",
+    "storage_bucket": "today-kotlin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:724829241629:android:340540aefa0a5ac966e1f4",
+        "android_client_info": {
+          "package_name": "com.example.today_kotlin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "724829241629-bg4ve8v7pag0m5vn9nj46sh9b9h5gnf0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfr-6Di9fPZjL9JJJGgH3tpM93tRNlfnw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "724829241629-bg4ve8v7pag0m5vn9nj46sh9b9h5gnf0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
