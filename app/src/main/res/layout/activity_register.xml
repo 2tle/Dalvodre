@@ -14,7 +14,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:id="@+id/justImg"
-        android:layout_marginTop="60dp"></ImageView>
+        android:layout_marginTop="60dp">
+
+    </ImageView>
 
     <EditText
         android:layout_width="300dp"
@@ -25,7 +27,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/justImg"
-        app:layout_constraintBottom_toBottomOf="parent"></EditText>
+        app:layout_constraintBottom_toBottomOf="parent">
+
+    </EditText>
 
     <EditText
         android:layout_width="300dp"
@@ -36,7 +40,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/email"
-        app:layout_constraintBottom_toBottomOf="@id/pw"></EditText>
+        app:layout_constraintBottom_toBottomOf="@id/pw">
+
+    </EditText>
 
     <EditText
         android:layout_width="300dp"
@@ -47,7 +53,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/username"
-        app:layout_constraintBottom_toBottomOf="@id/regBtn"></EditText>
+        app:layout_constraintBottom_toBottomOf="@id/regBtn">
+
+    </EditText>
 
     <Button
         android:layout_width="300dp"
@@ -57,8 +65,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="회원가입"
-        ></Button>
+        android:text="회원가입">
+
+    </Button>
 
 
 
