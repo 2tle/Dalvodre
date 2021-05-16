@@ -40,7 +40,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginTop="200dp"
         android:hint="E-Mail"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         >
     </EditText>
 
