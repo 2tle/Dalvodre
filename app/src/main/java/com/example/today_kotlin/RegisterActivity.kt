@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.example.today_kotlin.LoginActivity as LoginActivity
 
 class RegisterActivity : AppCompatActivity() {
     private var auth: FirebaseAuth = Firebase.auth
@@ -27,8 +28,7 @@ class RegisterActivity : AppCompatActivity() {
         var regBtn = findViewById(R.id.regBtn) as Button
 
         regBtn.setOnClickListener {
-            Toast.makeText(baseContext, "1111",
-                Toast.LENGTH_SHORT).show()
+
             createAccount(email.text.toString(),pw.text.toString(), name.text.toString())
             //writeNewUserWithTaskListeners()
 
@@ -41,8 +41,6 @@ class RegisterActivity : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(baseContext, "11",
-                        Toast.LENGTH_SHORT).show()
                     val user = auth.currentUser
                     createFireStoreUsername(user.uid,name,user.email)
 
@@ -64,8 +62,9 @@ class RegisterActivity : AppCompatActivity() {
         db.collection("users")
             .add(user)
             .addOnSuccessListener { documentReference ->
-                Toast.makeText(baseContext, "계정생성 성공",
-                    Toast.LENGTH_SHORT).show()
+                val nextIntent = Intent(this, LoginActivity::class.java)
+                startActivity(nextIntent)
+
             }
             .addOnFailureListener { e ->
                 Toast.makeText(baseContext, "계정생성 실패, 다시 시도해주세요.",
