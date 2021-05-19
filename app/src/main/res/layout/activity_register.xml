@@ -6,69 +6,119 @@
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
 
-    <!--<ImageView
-        android:id="@+id/justImg"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/tarju"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="60dp">
-
-    </ImageView>-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="50dp"
         android:layout_marginRight="180dp"
         android:text="회원가입"
         android:textSize="35sp"
         >
 
     </TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="이메일"
+        android:textSize="20sp"
+        android:layout_marginTop="150dp"
+        android:layout_marginRight="240dp"
+
+        >
+
+    </TextView>
     <EditText
         android:id="@+id/email"
         android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         android:inputType="textEmailAddress"
         android:hint="E-Mail"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="300dp">
+        android:layout_marginBottom="300dp"
+        >
 
     </EditText>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="415dp"
+        android:layout_marginRight="240dp"
+        android:text="닉네임"
+        android:textSize="20sp"
+        >
+
+    </TextView>
 
     <EditText
         android:id="@+id/username"
         android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         android:inputType="text"
-        android:hint="닉네임"
+        android:hint="최대  8자  입력"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/email"
-        app:layout_constraintBottom_toBottomOf="@id/pw">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="30dp"
+        >
 
     </EditText>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="283dp"
+        android:layout_marginRight="220dp"
+        android:text="비밀번호"
+        android:textSize="20sp"
+        >
+
+    </TextView>
 
     <EditText
         android:id="@+id/pw"
         android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         android:inputType="textPassword"
-        android:hint="비밀번호"
+        android:hint="최소 8자 입력"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/username"
-        app:layout_constraintBottom_toBottomOf="@id/regBtn">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="240dp">
 
     </EditText>
+
+    <EditText
+        android:id="@+id/pwch"
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="370dp"
+        android:inputType="textPassword"
+        android:hint="비밀번호 확인"
+        >
+
+    </EditText>
+
+
 
     <Button
         android:id="@+id/regBtn"
