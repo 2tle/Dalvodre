@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -14,14 +15,12 @@ import com.example.today_kotlin.LoginActivity as LoginActivity
 
 class RegisterActivity : AppCompatActivity() {
     private var auth: FirebaseAuth = Firebase.auth
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         val user = Firebase.auth.currentUser
-        if(user != null) {
-            Toast.makeText(baseContext, "로그인이 이미 되어있습니다.", //메인으로 넘어가기
-                Toast.LENGTH_SHORT).show()
-        }
         var email = findViewById(R.id.email) as EditText
         var pw = findViewById(R.id.pw) as EditText
         var name = findViewById(R.id.username) as EditText
@@ -30,7 +29,6 @@ class RegisterActivity : AppCompatActivity() {
         regBtn.setOnClickListener {
 
             createAccount(email.text.toString(),pw.text.toString(), name.text.toString())
-            //writeNewUserWithTaskListeners()
 
         }
 
@@ -38,6 +36,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun createAccount(email: String, password: String, name: String) {
+        val builder = AlertDialog.Builder(this)
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -45,14 +44,17 @@ class RegisterActivity : AppCompatActivity() {
                     createFireStoreUsername(user.uid,name,user.email)
 
                 } else {
-                    Toast.makeText(baseContext, "계정생성 실패, 다시 시도해주세요.",
-                        Toast.LENGTH_SHORT).show()
+                    builder.setTitle("회원가입 오류")
+                    builder.setMessage("회원가입에 실패하였습니다. 관리자에게 문의하세요.")
+                    builder.setPositiveButton("확인", null)
+                    builder.show()
                 }
             }
     }
 
 
     fun createFireStoreUsername(userId: String,name: String,email: String) {
+        val builder = AlertDialog.Builder(this)
         val db = Firebase.firestore
         val user = hashMapOf(
             "userId" to userId,
@@ -67,8 +69,10 @@ class RegisterActivity : AppCompatActivity() {
 
             }
             .addOnFailureListener { e ->
-                Toast.makeText(baseContext, "계정생성 실패, 다시 시도해주세요.",
-                    Toast.LENGTH_SHORT).show()
+                builder.setTitle("회원가입 오류")
+                builder.setMessage("회원가입에 실패하였습니다. 관리자에게 문의하세요.")
+                builder.setPositiveButton("확인", null)
+                builder.show()
             }
     }
 
