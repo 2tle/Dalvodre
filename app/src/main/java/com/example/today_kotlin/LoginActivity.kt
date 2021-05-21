@@ -41,7 +41,10 @@ class LoginActivity: AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
-        if(currentUser != null) { /* reload(); */ }
+        if(currentUser != null) {
+            //메인씬 연결
+            //startActivity(Intent(this, 메인화면액티비티::class.java))
+        }
     }
 
     private fun signIn(email: String, password: String) {
@@ -53,7 +56,7 @@ class LoginActivity: AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         val user = auth.currentUser
-                        // 메인 씐으로 넘겨야 하는데 좀 xml좀 만들어라
+                        //startActivity(Intent(this, 메인화면액티비티::class.java))
                     } else {
                         builder.setTitle("로그인 오류")
                         builder.setMessage("아이디 혹은 비밀번호를 확인해주세요.")

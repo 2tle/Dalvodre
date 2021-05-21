@@ -1,6 +1,7 @@
 package com.example.today_kotlin
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -9,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.example.today_kotlin.LoginActivity as LoginActivity
@@ -41,7 +43,23 @@ class RegisterActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val user = auth.currentUser
-                    createFireStoreUsername(user.uid,name,user.email)
+                    //createFireStoreUsername(user.uid,name,user.email)
+                    val profileCreateOrUpdates = userProfileChangeRequest {
+                        displayName=name
+                        photoUri=Uri.parse("https://firebasestorage.googleapis.com/v0/b/today-kotlin.appspot.com/o/profile-project.png?alt=media&token=336f24a4-ba3c-4be7-9ef2-a9f24a50db35");
+                    }
+                    user!!.updateProfile(profileCreateOrUpdates)
+                        .addOnCompleteListener { task ->
+                        if(task.isSuccessful) {
+                            //메인씬 연결
+                            //startActivity(Intent(this, 메인화면액티비티::class.java))
+                        } else {
+                            builder.setTitle("회원가입 오류")
+                            builder.setMessage("회원가입에 실패하였습니다. 관리자에게 문의하세요.")
+                            builder.setPositiveButton("확인", null)
+                            builder.show()
+                        }
+                    }
 
                 } else {
                     builder.setTitle("회원가입 오류")
@@ -53,7 +71,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
 
-    fun createFireStoreUsername(userId: String,name: String,email: String) {
+    /* fun createFireStoreUsername(userId: String,name: String,email: String) {
         val builder = AlertDialog.Builder(this)
         val db = Firebase.firestore
         val user = hashMapOf(
@@ -74,7 +92,7 @@ class RegisterActivity : AppCompatActivity() {
                 builder.setPositiveButton("확인", null)
                 builder.show()
             }
-    }
+    } */
 
 
 
