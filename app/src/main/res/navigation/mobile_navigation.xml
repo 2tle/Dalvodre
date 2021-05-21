@@ -14,12 +14,12 @@
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.example.today_kotlin.ui.save.SaveFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/menu_save"
         tools:layout="@layout/fragment_save" />
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.example.today_kotlin.ui.community.CommunityFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/menu_community"
         tools:layout="@layout/fragment_community" />
 </navigation>
