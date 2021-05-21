@@ -17,7 +17,7 @@
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
             android:theme="@style/Theme.Today_kotlin.NoActionBar"></activity>
-        <activity android:name=".subActivity" />
+        <activity android:name=".subActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

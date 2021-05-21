@@ -19,10 +19,10 @@ class LoginActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
         auth = Firebase.auth
-        var loginBtn = findViewById(R.id.loginBtn) as Button
-        var regBtn = findViewById(R.id.register) as Button
-        var email = findViewById(R.id.email) as EditText
-        var pw = findViewById(R.id.pw) as EditText
+        var loginBtn = findViewById<Button>(R.id.loginBtn)
+        var regBtn = findViewById<Button>(R.id.register)
+        var email = findViewById<EditText>(R.id.email)
+        var pw = findViewById<EditText>(R.id.pw)
         val builder = AlertDialog.Builder(this)
         builder.setTitle("로그인 오류")
         builder.setMessage("아이디 혹은 비밀번호를 확인해주세요.")
@@ -40,10 +40,9 @@ class LoginActivity: AppCompatActivity() {
     }
     override fun onStart() {
         super.onStart()
-        val currentUser = auth.currentUser
+        var currentUser = auth.currentUser
         if(currentUser != null) {
-            //메인씬 연결
-            //startActivity(Intent(this, 메인화면액티비티::class.java))
+            startActivity(Intent(this, subActivity::class.java))
         }
     }
 
@@ -56,7 +55,7 @@ class LoginActivity: AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         val user = auth.currentUser
-                        //startActivity(Intent(this, 메인화면액티비티::class.java))
+                        startActivity(Intent(this, subActivity::class.java))
                     } else {
                         builder.setTitle("로그인 오류")
                         builder.setMessage("아이디 혹은 비밀번호를 확인해주세요.")

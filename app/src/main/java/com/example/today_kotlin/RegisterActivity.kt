@@ -51,8 +51,7 @@ class RegisterActivity : AppCompatActivity() {
                     user!!.updateProfile(profileCreateOrUpdates)
                         .addOnCompleteListener { task ->
                         if(task.isSuccessful) {
-                            //메인씬 연결
-                            //startActivity(Intent(this, 메인화면액티비티::class.java))
+                            startActivity(Intent(this, subActivity::class.java))
                         } else {
                             builder.setTitle("회원가입 오류")
                             builder.setMessage("회원가입에 실패하였습니다. 관리자에게 문의하세요.")
