@@ -3,7 +3,7 @@ package com.example.today_kotlin.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-
+//함수 만들고 함수값을 아래 value에 넣으면 될듯
 class HomeViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
