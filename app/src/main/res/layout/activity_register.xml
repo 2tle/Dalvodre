@@ -13,8 +13,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/KEmailText"
-        android:layout_marginBottom="50dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="180dp"
         android:text="회원가입"
