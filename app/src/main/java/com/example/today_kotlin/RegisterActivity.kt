@@ -23,10 +23,15 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         val user = Firebase.auth.currentUser
-        var email = findViewById(R.id.email) as EditText
-        var pw = findViewById(R.id.pw) as EditText
-        var name = findViewById(R.id.username) as EditText
-        var regBtn = findViewById(R.id.regBtn) as Button
+        var email = findViewById<EditText>(R.id.email)
+        var pw = findViewById<EditText>(R.id.pw)
+        var name = findViewById<EditText>(R.id.username)
+        var regBtn = findViewById<Button>(R.id.regBtn)
+        var ccBtn = findViewById<Button>(R.id.ccBtn)
+
+        ccBtn.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
 
         regBtn.setOnClickListener {
 
