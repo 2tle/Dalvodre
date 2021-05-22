@@ -13,11 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Today_kotlin">
+        <activity android:name=".settingActivity"></activity>
         <activity
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.Today_kotlin.NoActionBar"></activity>
-        <activity android:name=".subActivity"></activity>
+            android:theme="@style/Theme.Today_kotlin.NoActionBar" />
+        <activity android:name=".subActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

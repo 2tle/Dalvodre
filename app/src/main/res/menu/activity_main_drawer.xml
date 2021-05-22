@@ -6,7 +6,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_home"
             android:title="오늘의 한마디" />
         <item
             android:id="@+id/nav_gallery"
@@ -14,7 +14,7 @@
             android:title="그동안 한마디" />
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="커뮤니티" />
+            android:icon="@drawable/ic_community"
+            android:title="너나들이" />
     </group>
 </menu>
