@@ -10,7 +10,7 @@
             android:title="오늘의 한마디" />
         <item
             android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_save"
             android:title="그동안 한마디" />
         <item
             android:id="@+id/nav_slideshow"

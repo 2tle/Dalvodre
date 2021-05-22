@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Today_kotlin">
-        <activity android:name=".settingActivity"></activity>
+        <activity android:name=".writeActivity"></activity>
+        <activity android:name=".settingActivity" />
         <activity
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
