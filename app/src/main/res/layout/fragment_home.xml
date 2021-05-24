@@ -22,7 +22,7 @@
         <TextView
             android:id="@+id/text_home"
             android:layout_width="match_parent"
-            android:layout_height="700dp"
+            android:layout_height="750dp"
             android:gravity="center"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
