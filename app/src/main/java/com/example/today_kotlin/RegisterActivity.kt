@@ -51,7 +51,7 @@ class RegisterActivity : AppCompatActivity() {
                     //createFireStoreUsername(user.uid,name,user.email)
                     val profileCreateOrUpdates = userProfileChangeRequest {
                         displayName=name
-                        photoUri=Uri.parse("https://firebasestorage.googleapis.com/v0/b/today-kotlin.appspot.com/o/profile-project.png?alt=media&token=336f24a4-ba3c-4be7-9ef2-a9f24a50db35");
+                        photoUri=Uri.parse("https://firebasestorage.googleapis.com/v0/b/today-kotlin.appspot.com/o/profile0.png?alt=media&token=1aee06c2-42d3-4700-b72c-8e2bc71227f1");
                     }
                     user!!.updateProfile(profileCreateOrUpdates)
                         .addOnCompleteListener { task ->
