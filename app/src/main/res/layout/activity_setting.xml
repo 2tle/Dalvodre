@@ -18,7 +18,7 @@
         android:layout_marginLeft="50dp"
         android:text="프로필 사진"
         android:textSize="20sp"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="30dp"/>
     <HorizontalScrollView
         android:layout_width="370dp"
         android:layout_height="wrap_content"
@@ -30,33 +30,38 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <ImageButton
+                android:id="@+id/profile1"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/profile"
+                android:src="@drawable/profile1"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"/>
             <ImageButton
+                android:id="@+id/profile2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/profil1"
+                android:src="@drawable/profile2"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"/>
             <ImageButton
+                android:id="@+id/profile3"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/profil2"
+                android:src="@drawable/profile3"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"/>
             <ImageButton
+                android:id="@+id/profile4"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/profil3"
+                android:src="@drawable/profile4"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"/>
             <ImageButton
+                android:id="@+id/profile5"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/profil4"
+                android:src="@drawable/profile5"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"/>
 
