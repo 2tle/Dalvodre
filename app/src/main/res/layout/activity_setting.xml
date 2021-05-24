@@ -94,7 +94,7 @@
             <ImageButton
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/profile"
+                android:src="@drawable/profil1"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"/>
             <ImageButton
@@ -106,7 +106,7 @@
             <ImageButton
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/profile"
+                android:src="@drawable/profil2"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"/>
             <ImageButton
@@ -120,4 +120,26 @@
 
         </LinearLayout>
     </HorizontalScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/regBtn"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="50dp"
+            android:text="설정"
+            android:textSize="16sp"
+            android:backgroundTint="#A564FF"/>
+        <Button
+            android:id="@+id/ccBtn"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="20dp"
+            android:backgroundTint="#959595"
+            android:text="취소"
+            android:textSize="16sp"/>
+    </LinearLayout>
 </LinearLayout>
