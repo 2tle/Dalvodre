@@ -7,17 +7,73 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="80dp"
         android:layout_marginLeft="40dp"
         android:text="내 정보 설정"
-        android:textSize="35sp"
-        >
-    </TextView>
+        android:textSize="35sp"/>
+    <TextView
+        android:id="@+id/settext6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:text="프로필 사진"
+        android:textSize="20sp"
+        android:layout_marginTop="30dp"/>
+    <HorizontalScrollView
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/profile1"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/profile1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"/>
+            <ImageButton
+                android:id="@+id/profile2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/profile2"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"/>
+            <ImageButton
+                android:id="@+id/profile3"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/profile3"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"/>
+            <ImageButton
+                android:id="@+id/profile4"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/profile4"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"/>
+            <ImageButton
+                android:id="@+id/profile5"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/profile5"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"/>
+
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:text="닉네임"
         android:textSize="20sp"/>
     <EditText
@@ -35,7 +91,7 @@
         android:layout_marginLeft="50dp"
         android:text="이메일"
         android:textSize="20sp"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="40dp"/>
     <TextView
         android:id="@+id/settext4"
         android:layout_width="300dp"
@@ -49,7 +105,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:text="비밀번호"
         android:textSize="20sp"/>
     <EditText
@@ -67,59 +123,6 @@
         android:inputType="textPassword"
         android:layout_gravity="center"
         android:hint="비밀번호 확인"/>
-    <TextView
-        android:id="@+id/settext6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:text="프로필 사진"
-        android:textSize="20sp"
-        android:layout_marginTop="30dp"/>
-    <HorizontalScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/profile"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"/>
-            <ImageButton
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/profil1"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"/>
-            <ImageButton
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/profile"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"/>
-            <ImageButton
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/profil2"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"/>
-            <ImageButton
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/profile"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"/>
-
-
-
-        </LinearLayout>
-    </HorizontalScrollView>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -128,18 +131,18 @@
             android:layout_width="140dp"
             android:layout_height="60dp"
             android:layout_marginTop="40dp"
-            android:layout_marginLeft="50dp"
             android:text="설정"
-            android:textSize="16sp"
+            android:layout_marginLeft="70dp"
+            android:textSize="20sp"
             android:backgroundTint="#A564FF"/>
         <Button
             android:id="@+id/ccBtn"
             android:layout_width="140dp"
             android:layout_height="60dp"
             android:layout_marginTop="40dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:backgroundTint="#959595"
             android:text="취소"
-            android:textSize="16sp"/>
+            android:textSize="20sp"/>
     </LinearLayout>
 </LinearLayout>
