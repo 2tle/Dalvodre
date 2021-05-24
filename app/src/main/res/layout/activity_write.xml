@@ -1,9 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".writeActivity">
+    android:orientation="vertical">
+    <ImageButton
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="right"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_send"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:backgroundTint="#00ff0000"/>
+    <TextView
+        android:id="@+id/write_word"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:text="여기에 유저가\n받은 한마디"
+        android:textSize="40dp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:background="@drawable/dinner"/>
+    <EditText
+        android:id="@+id/write_post"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:inputType="none"
+        android:gravity="top"
+        android:hint="오늘의 한마디를 공유해보세요"
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
