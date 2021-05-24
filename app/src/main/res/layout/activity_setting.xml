@@ -123,26 +123,29 @@
         android:inputType="textPassword"
         android:layout_gravity="center"
         android:hint="비밀번호 확인"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <Button
             android:id="@+id/regBtn"
             android:layout_width="140dp"
             android:layout_height="60dp"
-            android:layout_marginTop="40dp"
-            android:text="설정"
             android:layout_marginLeft="70dp"
-            android:textSize="20sp"
-            android:backgroundTint="#A564FF"/>
+            android:layout_marginTop="40dp"
+            android:backgroundTint="#A564FF"
+            android:text="설정"
+            android:textSize="20sp" />
+
         <Button
             android:id="@+id/ccBtn"
             android:layout_width="140dp"
             android:layout_height="60dp"
-            android:layout_marginTop="40dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
             android:backgroundTint="#959595"
             android:text="취소"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
     </LinearLayout>
 </LinearLayout>

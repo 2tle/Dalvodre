@@ -1,8 +1,12 @@
 package com.example.today_kotlin
 
+import android.content.Context
 import android.os.Bundle
+import android.provider.ContactsContract
+import android.view.LayoutInflater
 import android.view.Menu
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
@@ -15,20 +19,27 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.bumptech.glide.Glide
+import com.google.api.Distribution
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
+import com.example.today_kotlin.NavHeaderActivity as NavHeaderActivity
 
 class Main2Activity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var auth: FirebaseAuth
+    private lateinit var storage: FirebaseStorage
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
@@ -39,16 +50,30 @@ class Main2Activity : AppCompatActivity() {
                 R.id.nav_home, R.id.nav_save, R.id.nav_community
             ), drawerLayout
         )
+        var user = Firebase.auth.currentUser
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        var navigationView: NavigationView = findViewById(R.id.nav_view)
+        var headerView: View = navigationView.getHeaderView(0)
+        var headerIcon: ImageView = headerView.findViewById(R.id.imageView)
+        var headerUsername: Button = headerView.findViewById(R.id.name_btn)
+        var headerEmail: TextView = headerView.findViewById(R.id.textView)
 
+        storage= FirebaseStorage.getInstance()
+
+        val httpsReference = storage.getReferenceFromUrl(user.photoUrl.toString())
+        Glide.with(this).load(httpsReference).into(headerIcon)
+
+        headerUsername.setText(user.displayName)
+        headerEmail.setText(user.email)
 
     }
+
+
 
     override fun onStart(){
         super.onStart()
         auth = Firebase.auth
-        val currentUser = auth.currentUser;
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
