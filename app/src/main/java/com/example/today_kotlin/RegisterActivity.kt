@@ -25,6 +25,7 @@ class RegisterActivity : AppCompatActivity() {
         val user = Firebase.auth.currentUser
         var email = findViewById<EditText>(R.id.email)
         var pw = findViewById<EditText>(R.id.pw)
+        var pwCheck = findViewById<EditText>(R.id.pwch);
         var name = findViewById<EditText>(R.id.username)
         var regBtn = findViewById<Button>(R.id.regBtn)
         var ccBtn = findViewById<Button>(R.id.ccBtn)
@@ -32,10 +33,16 @@ class RegisterActivity : AppCompatActivity() {
         ccBtn.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
         }
-
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("회원가입 오류")
+        builder.setMessage("형식에 맞게 입력해주세요.")
+        builder.setPositiveButton("확인", null)
         regBtn.setOnClickListener {
-
-            createAccount(email.text.toString(),pw.text.toString(), name.text.toString())
+            if(pw.text.toString() != "" && pw.text.toString() == pwCheck.text.toString() && email.text.toString() != "" && name.text.toString() != "")
+                createAccount(email.text.toString(),pw.text.toString(), name.text.toString())
+            else {
+                builder.show()
+            }
 
         }
 

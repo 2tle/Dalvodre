@@ -23,6 +23,7 @@ class LoginActivity: AppCompatActivity() {
         var regBtn = findViewById<Button>(R.id.register)
         var email = findViewById<EditText>(R.id.email)
         var pw = findViewById<EditText>(R.id.pw)
+
         val builder = AlertDialog.Builder(this)
         builder.setTitle("로그인 오류")
         builder.setMessage("아이디 혹은 비밀번호를 확인해주세요.")
