@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.text.Layout
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
@@ -43,8 +44,6 @@ class Main2Activity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var auth: FirebaseAuth
     private lateinit var storage: FirebaseStorage
-    lateinit var txtView: TextView
-    //lateinit var binding:FragmentListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +65,6 @@ class Main2Activity : AppCompatActivity() {
 
 
 
-
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         val navigationView: NavigationView = findViewById(R.id.nav_view)
@@ -74,71 +72,22 @@ class Main2Activity : AppCompatActivity() {
         val headerIcon: ImageView = headerView.findViewById(R.id.imageView)
         val headerUsername: Button = headerView.findViewById(R.id.name_btn)
         val headerEmail: TextView = headerView.findViewById(R.id.textView)
-        //val fragmentView: View =
-        //val appBarMainTmp: View = findViewById(R.id.includeAppBarMain)
-        //val contentMainTmp: View = appBarMainTmp.findViewById(R.id.includeContentMain)
-        //val navHostFragTmp: View = contentMainTmp.findViewById(R.id.nav_host_fragment)
-        //val viewTmp: View = inflater.inflate(R.layout.)
-
-        //val tmp: View = onCreateView()
-        /*val navHomeTmp: Fragment = navHostFragTmp.findViewById(R.id.nav_home);
-        val textToday: TextView = navHomeTmp.findViewById(R.id.text_home); */
-
 
 
         headerUsername.setOnClickListener {
             startActivity(Intent(this, settingActivity::class.java))
         }
-        /*
-        val docRef = db.collection("users").document(user.uid)
-        docRef.get().addOnSuccessListener { document ->
-            if(document != null) {
-                if(LocalDateTime.now().format(DateTimeFormatter.ISO_DATE) == document.data?.get("date") as String) {
-                    textToday.setText(document.data?.get("todayWords").toString())
-                } else {
-                    val newListGiveMe = db.collection("words").document("mGHEB2dhXFQkPF8KJww2")
-                    newListGiveMe.get().addOnSuccessListener { document1 ->
-                        val wordList: ArrayList<String> = document1.data?.get("words") as ArrayList<String>
-                        val todayWords: String = wordList.get(Random().nextInt(wordList.size))
-                        val listWords: ArrayList<String> = document.data?.get("listWords") as ArrayList<String>
-                        listWords.add(todayWords)
-                        val firestoreData = hashMapOf(
-                            "date" to LocalDateTime.now().format(DateTimeFormatter.ISO_DATE),
-                            "todayWords" to todayWords,
-                            "listWords" to listWords
-                        )
-                        docRef.set(firestoreData).addOnSuccessListener {
-                            textToday.setText(todayWords)
-                        }
-
-                    }
-                }
-            }
-        } */
 
         storage= FirebaseStorage.getInstance()
-
-        val httpsReference = storage.getReferenceFromUrl(user.photoUrl.toString())
+        val d = Log.d("Fuck >>>", user?.photoUrl.toString())
+        val httpsReference = storage.getReferenceFromUrl(user?.photoUrl.toString())
         Glide.with(this).load(httpsReference).into(headerIcon)
 
         headerUsername.setText(user.displayName)
         headerEmail.setText(user.email)
 
     }
-    /*
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentListBinding.inflate(inflater, container,false)
-        return binding.root
-    }
-    fun test() {
-        // binding 이 프로퍼티로 선언되어 있기 때문에 프래그먼트 전체에서 호출 가능
-        // binding.위젯id.속성 = "값"
-        binding.textView.text = "hello fragment"
-    }
- */
+
 
     override fun onStart(){
         super.onStart()
