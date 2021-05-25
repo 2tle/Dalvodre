@@ -78,7 +78,7 @@ class RegisterActivity : AppCompatActivity() {
                                     "todayWords" to todayWords,
                                     "listWords" to listWords
                                 )
-                                db.collection("users").document().set(firestoreData).addOnSuccessListener {
+                                db.collection("users").document(user.uid).set(firestoreData).addOnSuccessListener {
                                     startActivity(Intent(this, subActivity::class.java))
                                 }
 

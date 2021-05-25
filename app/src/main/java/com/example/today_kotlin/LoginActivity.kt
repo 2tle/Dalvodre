@@ -42,7 +42,7 @@ class LoginActivity: AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         var currentUser = auth.currentUser
-        //currentUser = null //커밋 꼭 하기! 현준이를 위해!!!!
+        currentUser = null //커밋 꼭 하기! 현준이를 위해!!!!
         if(currentUser != null) {
             startActivity(Intent(this, subActivity::class.java))
         }
