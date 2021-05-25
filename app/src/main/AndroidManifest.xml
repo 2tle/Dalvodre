@@ -16,6 +16,8 @@
         <activity android:name=".NavHeaderActivity"></activity>
         <activity android:name=".writeActivity"></activity>
         <activity android:name=".settingActivity" />
+
+
         <activity
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
