@@ -78,8 +78,6 @@
                         android:adjustViewBounds="true"
                         android:scaleType="fitCenter"/>
 
-
-
                 </LinearLayout>
             </HorizontalScrollView>
             <TextView

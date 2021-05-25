@@ -3,7 +3,7 @@
     package="com.example.today_kotlin">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-feature android:name="android.hardware.type.watch" />
 
     <application
@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Today_kotlin">
+        <activity android:name=".NavHeaderActivity"></activity>
         <activity android:name=".writeActivity"></activity>
         <activity android:name=".settingActivity" />
         <activity
