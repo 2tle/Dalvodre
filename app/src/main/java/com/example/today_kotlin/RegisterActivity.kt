@@ -13,6 +13,9 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 import com.example.today_kotlin.LoginActivity as LoginActivity
 
 class RegisterActivity : AppCompatActivity() {
@@ -50,6 +53,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun createAccount(email: String, password: String, name: String) {
+        val db = Firebase.firestore
         val builder = AlertDialog.Builder(this)
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
@@ -63,7 +67,23 @@ class RegisterActivity : AppCompatActivity() {
                     user!!.updateProfile(profileCreateOrUpdates)
                         .addOnCompleteListener { task ->
                         if(task.isSuccessful) {
-                            startActivity(Intent(this, subActivity::class.java))
+                            val docu = db.collection("words").document("mGHEB2dhXFQkPF8KJww2")
+                            docu.get().addOnSuccessListener { document ->
+                                val wordList: ArrayList<String> = document.data?.get("words") as ArrayList<String>
+                                val todayWords: String = wordList.get(Random().nextInt(wordList.size))
+                                val listWords: ArrayList<String> = arrayListOf()
+                                listWords.add(todayWords)
+                                val firestoreData = hashMapOf(
+                                    "date" to LocalDateTime.now().format(DateTimeFormatter.ISO_DATE),
+                                    "todayWords" to todayWords,
+                                    "listWords" to listWords
+                                )
+                                db.collection("users").document().set(firestoreData).addOnSuccessListener {
+                                    startActivity(Intent(this, subActivity::class.java))
+                                }
+
+                            }
+
                         } else {
                             builder.setTitle("회원가입 오류")
                             builder.setMessage("회원가입에 실패하였습니다. 관리자에게 문의하세요.")
