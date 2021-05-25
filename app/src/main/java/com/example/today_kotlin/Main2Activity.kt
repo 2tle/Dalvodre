@@ -1,6 +1,7 @@
 package com.example.today_kotlin
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.view.LayoutInflater
@@ -50,6 +51,7 @@ class Main2Activity : AppCompatActivity() {
                 R.id.nav_home, R.id.nav_save, R.id.nav_community
             ), drawerLayout
         )
+
         var user = Firebase.auth.currentUser
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
@@ -58,7 +60,9 @@ class Main2Activity : AppCompatActivity() {
         var headerIcon: ImageView = headerView.findViewById(R.id.imageView)
         var headerUsername: Button = headerView.findViewById(R.id.name_btn)
         var headerEmail: TextView = headerView.findViewById(R.id.textView)
-
+        headerUsername.setOnClickListener {
+            startActivity(Intent(this, settingActivity::class.java))
+        }
         storage= FirebaseStorage.getInstance()
 
         val httpsReference = storage.getReferenceFromUrl(user.photoUrl.toString())
