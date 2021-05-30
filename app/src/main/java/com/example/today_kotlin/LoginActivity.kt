@@ -1,13 +1,10 @@
 package com.example.today_kotlin
 
-import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -19,10 +16,10 @@ class LoginActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
         auth = Firebase.auth
-        var loginBtn = findViewById<Button>(R.id.loginBtn)
-        var regBtn = findViewById<Button>(R.id.register)
-        var email = findViewById<EditText>(R.id.email)
-        var pw = findViewById<EditText>(R.id.pw)
+        val loginBtn = findViewById<Button>(R.id.loginBtn)
+        val regBtn = findViewById<Button>(R.id.register)
+        val email = findViewById<EditText>(R.id.email)
+        val pw = findViewById<EditText>(R.id.pw)
 
         val builder = AlertDialog.Builder(this)
         builder.setTitle("로그인 오류")
@@ -41,8 +38,7 @@ class LoginActivity: AppCompatActivity() {
     }
     override fun onStart() {
         super.onStart()
-        var currentUser = auth.currentUser
-        currentUser = null //커밋 꼭 하기! 현준이를 위해!!!!
+        val currentUser = auth.currentUser
         if(currentUser != null) {
             startActivity(Intent(this, subActivity::class.java))
         }

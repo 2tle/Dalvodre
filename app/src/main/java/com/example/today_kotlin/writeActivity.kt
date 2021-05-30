@@ -13,12 +13,12 @@ class writeActivity : AppCompatActivity() {
 
         val dateAndtime: LocalDateTime = LocalDateTime.now()
         val formatter = DateTimeFormatter.ofPattern("HH")
-        var formatted = dateAndtime.format(formatter)
-        var background = findViewById<TextView>(R.id.write_word)
+        val formatted = dateAndtime.format(formatter)
+        val background = findViewById<TextView>(R.id.write_word)
 
-        if(formatted.toInt()>=5 && formatted.toInt()<=18)
+        if(formatted.toInt() in 5..18)
             background.setBackgroundResource(R.drawable.not)
-        else if(formatted.toInt()>=16 && formatted.toInt()<=21)
+        else if(formatted.toInt() in 16..21)
             background.setBackgroundResource(R.drawable.dinner)
     }
 }

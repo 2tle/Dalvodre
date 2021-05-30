@@ -1,8 +1,6 @@
 package com.example.today_kotlin
 
-import android.content.DialogInterface
 import android.content.Intent
-import android.media.Image
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

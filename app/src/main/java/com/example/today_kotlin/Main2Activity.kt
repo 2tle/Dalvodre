@@ -1,19 +1,10 @@
 package com.example.today_kotlin
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.provider.ContactsContract
-import android.text.Layout
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
-import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.app.AlertDialog
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -22,22 +13,13 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.ActionBarContainer
 import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.google.api.Distribution
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
-import com.google.firestore.v1.FirestoreGrpc
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.util.*
-import com.example.today_kotlin.NavHeaderActivity as NavHeaderActivity
 
 class Main2Activity : AppCompatActivity() {
 
@@ -79,12 +61,11 @@ class Main2Activity : AppCompatActivity() {
         }
 
         storage= FirebaseStorage.getInstance()
-        val d = Log.d("Fuck >>>", user?.photoUrl.toString())
         val httpsReference = storage.getReferenceFromUrl(user?.photoUrl.toString())
         Glide.with(this).load(httpsReference).into(headerIcon)
 
-        headerUsername.setText(user.displayName)
-        headerEmail.setText(user.email)
+        headerUsername.text = user?.displayName
+        headerEmail.text = user?.email
 
     }
 
