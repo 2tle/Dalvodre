@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingHorizontal="20dp"
+    android:paddingVertical="10dp"
+    android:background="@drawable/line_recyclerview">
+    <!--layout의 background를 line_recycylerview(drawable유형으로 레이아웃의 끝에 윤곽선)-->
+
+    <ImageView
+        android:id="@+id/image_ex"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+    <!--ImageView : 행운 아이템 -->
+    <TextView
+        android:id="@+id/text_ex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="*그동안의 한마디*"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/image_ex"
+        android:layout_marginLeft="15dp"/>
+
+    <TextView
+        android:id="@+id/date_ex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="2021/05/31"
+        android:textColor="#9C27B0"
+        app:layout_constraintTop_toBottomOf="@id/text_ex"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="290dp"
+        android:layout_marginTop="10dp"/>
+    <!--textView : 그동안의 한마디들이 들어감-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
