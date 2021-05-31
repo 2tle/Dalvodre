@@ -8,14 +8,7 @@
     android:background="@drawable/line_recyclerview">
     <!--layout의 background를 line_recycylerview(drawable유형으로 레이아웃의 끝에 윤곽선)-->
 
-    <ImageView
-        android:id="@+id/image_ex"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/ic_launcher_background"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+
     <!--ImageView : 행운 아이템 -->
     <TextView
         android:id="@+id/text_ex"
@@ -26,7 +19,7 @@
         android:textColor="@color/black"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/image_ex"
+        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="15dp"/>
 
     <TextView

@@ -65,14 +65,20 @@ class writeActivity : AppCompatActivity() {
                         val wordList: ArrayList<String> = document1.data?.get("words") as ArrayList<String>
                         val todayWords: String = wordList.get(Random().nextInt(wordList.size))
                         val listWords: ArrayList<String> = document.data?.get("listWords") as ArrayList<String>
+                        val listDates: ArrayList<String> = document.data?.get("listDates") as ArrayList<String>
                         listWords.add(todayWords)
+                        listDates.add(LocalDateTime.now().format(DateTimeFormatter.ISO_DATE).toString())
                         val firestoreData = hashMapOf(
                             "date" to LocalDateTime.now().format(DateTimeFormatter.ISO_DATE),
                             "todayWords" to todayWords,
-                            "listWords" to listWords
+                            "listWords" to listWords,
+                            "listDates" to listDates
                         )
-                        docRef.set(firestoreData).addOnSuccessListener {
-                            words.text= todayWords
+                        //Log.d("<<>>",firestoreData.toString());
+                        db.collection("users").document(user.uid).set(firestoreData).addOnSuccessListener {
+                            words.text = todayWords
+
+
                         }
                     }
                 }

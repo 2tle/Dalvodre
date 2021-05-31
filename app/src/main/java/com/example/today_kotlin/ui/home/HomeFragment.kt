@@ -1,5 +1,6 @@
 package com.example.today_kotlin.ui.home
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,10 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.today_kotlin.R
+import com.example.today_kotlin.subActivity
 import com.example.today_kotlin.writeActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -57,23 +60,27 @@ class HomeFragment : Fragment() {
                             val wordList: ArrayList<String> = document1.data?.get("words") as ArrayList<String>
                             val todayWords: String = wordList.get(Random().nextInt(wordList.size))
                             val listWords: ArrayList<String> = document.data?.get("listWords") as ArrayList<String>
+                            val listDates: ArrayList<String> = document.data?.get("listDates") as ArrayList<String>
                             listWords.add(todayWords)
+                            listDates.add(LocalDateTime.now().format(DateTimeFormatter.ISO_DATE).toString())
                             val firestoreData = hashMapOf(
                                 "date" to LocalDateTime.now().format(DateTimeFormatter.ISO_DATE),
                                 "todayWords" to todayWords,
-                                "listWords" to listWords
+                                "listWords" to listWords,
+                                "listDates" to listDates
                             )
-                            docRef.set(firestoreData).addOnSuccessListener {
-                                textView.text= todayWords
+                            //Log.d("<<>>",firestoreData.toString());
+                            db.collection("users").document(user.uid).set(firestoreData).addOnSuccessListener {
+                                homeViewModel.text.observe(viewLifecycleOwner, Observer {
+                                    textView.text = todayWords
+                                })
+
+
                             }
                         }
                     }
                 }
             }
-
-        /*homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = ""
-        }) */
         return root
 
     }

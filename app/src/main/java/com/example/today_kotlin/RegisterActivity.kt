@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
@@ -16,6 +17,7 @@ import com.google.firebase.ktx.Firebase
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
+import kotlin.collections.ArrayList
 import com.example.today_kotlin.LoginActivity as LoginActivity
 
 @Suppress("UNCHECKED_CAST", "NAME_SHADOWING")
@@ -71,15 +73,19 @@ class RegisterActivity : AppCompatActivity() {
                                 val wordList: ArrayList<String> = document.data?.get("words") as ArrayList<String>
                                 val todayWords: String = wordList.get(Random().nextInt(wordList.size))
                                 val listWords: ArrayList<String> = arrayListOf()
+                                val listDates: ArrayList<String> = arrayListOf()
                                 listWords.add(todayWords)
+                                listDates.add(LocalDateTime.now().format(DateTimeFormatter.ISO_DATE).toString())
                                 val firestoreData = hashMapOf(
                                     "date" to LocalDateTime.now().format(DateTimeFormatter.ISO_DATE),
                                     "todayWords" to todayWords,
-                                    "listWords" to listWords
+                                    "listWords" to listWords,
+                                    "listDates" to listDates
                                 )
+                                //Log.d("<<>>",firestoreData.toString());
                                 db.collection("users").document(user.uid).set(firestoreData).addOnSuccessListener {
-                                    builder.setTitle("회원가입 오류")
-                                    builder.setMessage("회원가입에 실패하였습니다. 관리자에게 문의하세요.")
+                                    builder.setTitle("회원가입 성공")
+                                    builder.setMessage("회원가입에 성공하였습니다. 감사합니다.")
                                     builder.setPositiveButton("확인"){ _: DialogInterface, _: Int ->
                                         startActivity(Intent(this, subActivity::class.java))
                                     }
