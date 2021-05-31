@@ -1,9 +1,10 @@
 package com.example.today_kotlin
 
+import android.annotation.SuppressLint
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
@@ -11,15 +12,17 @@ import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.ktx.storage
-import org.w3c.dom.Text
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 
+@Suppress("RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS",
+    "NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS", "UNCHECKED_CAST"
+)
 class writeActivity : AppCompatActivity() {
+
+    @SuppressLint("CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_write)
@@ -27,9 +30,9 @@ class writeActivity : AppCompatActivity() {
         val dateAndtime: LocalDateTime = LocalDateTime.now()
         val formatter = DateTimeFormatter.ofPattern("HH")
         val formatted = dateAndtime.format(formatter)
-        val background = findViewById<TextView>(R.id.write_word)
+        val background: TextView = findViewById(R.id.write_word)
         val sendBtn = findViewById<ImageButton>(R.id.ic_send)
-        val words = findViewById<TextView>(R.id.write_word)
+        val words: TextView = findViewById(R.id.write_word)
         val text = findViewById<EditText>(R.id.write_post)
         var backgroundType: Int = 0
         val user = Firebase.auth.currentUser
@@ -95,9 +98,11 @@ class writeActivity : AppCompatActivity() {
             val builder = AlertDialog.Builder(this)
             builder.setTitle("업로드 성공")
             builder.setMessage("너나들이에 성공적으로 포스트가 업로드 되었습니다.")
-            builder.setPositiveButton("확인", null)
+            builder.setPositiveButton("확인"){ dialogInterface: DialogInterface, i: Int ->
+                startActivity(Intent(this, Main2Activity::class.java))
+            }
             builder.show()
-            startActivity(Intent(this, Main2Activity::class.java))
+
         }
 
     }

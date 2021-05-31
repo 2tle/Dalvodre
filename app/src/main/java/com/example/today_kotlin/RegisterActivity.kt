@@ -4,7 +4,6 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
@@ -18,6 +17,7 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 import com.example.today_kotlin.LoginActivity as LoginActivity
 
+@Suppress("UNCHECKED_CAST", "NAME_SHADOWING")
 class RegisterActivity : AppCompatActivity() {
     private var auth: FirebaseAuth = Firebase.auth
 

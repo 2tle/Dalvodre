@@ -13,7 +13,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.ktx.Firebase
-import org.w3c.dom.Text
 
 class settingActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -23,7 +22,7 @@ class settingActivity : AppCompatActivity() {
         var user = Firebase.auth.currentUser
         var profileURL: String = "";
         val profileEmail = findViewById<TextView>(R.id.settext4)
-        profileEmail.setText(user.email.toString())
+        profileEmail.text = user?.email.toString()
         val profileImageButton1 = findViewById<ImageButton>(R.id.profile1)
         val profileImageButton2 = findViewById<ImageButton>(R.id.profile2)
         val profileImageButton3 = findViewById<ImageButton>(R.id.profile3)
