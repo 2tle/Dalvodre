@@ -47,9 +47,6 @@ class LoginActivity: AppCompatActivity() {
 
     private fun signIn(email: String, password: String) {
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("로그인 오류")
-        builder.setMessage("아이디 혹은 비밀번호를 확인해주세요.")
-        builder.setPositiveButton("확인", null)
         auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {

@@ -1,10 +1,10 @@
 package com.example.today_kotlin
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
@@ -18,6 +18,7 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 import com.example.today_kotlin.LoginActivity as LoginActivity
 
+@Suppress("UNCHECKED_CAST", "NAME_SHADOWING")
 class RegisterActivity : AppCompatActivity() {
     private var auth: FirebaseAuth = Firebase.auth
 
@@ -77,7 +78,14 @@ class RegisterActivity : AppCompatActivity() {
                                     "listWords" to listWords
                                 )
                                 db.collection("users").document(user.uid).set(firestoreData).addOnSuccessListener {
-                                    startActivity(Intent(this, subActivity::class.java))
+                                    builder.setTitle("회원가입 오류")
+                                    builder.setMessage("회원가입에 실패하였습니다. 관리자에게 문의하세요.")
+                                    builder.setPositiveButton("확인"){ _: DialogInterface, _: Int ->
+                                        startActivity(Intent(this, subActivity::class.java))
+                                    }
+                                    builder.show()
+
+
                                 }
 
                             }

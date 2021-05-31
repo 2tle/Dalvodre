@@ -1,5 +1,6 @@
 package com.example.today_kotlin
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +14,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.ktx.Firebase
-import org.w3c.dom.Text
 
 class settingActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -23,7 +23,7 @@ class settingActivity : AppCompatActivity() {
         var user = Firebase.auth.currentUser
         var profileURL: String = "";
         val profileEmail = findViewById<TextView>(R.id.settext4)
-        profileEmail.setText(user.email.toString())
+        profileEmail.text = user?.email.toString()
         val profileImageButton1 = findViewById<ImageButton>(R.id.profile1)
         val profileImageButton2 = findViewById<ImageButton>(R.id.profile2)
         val profileImageButton3 = findViewById<ImageButton>(R.id.profile3)
@@ -66,9 +66,11 @@ class settingActivity : AppCompatActivity() {
                                 val builder = AlertDialog.Builder(this)
                                 builder.setTitle("정보 변경 완료")
                                 builder.setMessage("회원님의 정보가 변경되었습니다.")
-                                builder.setPositiveButton("확인",null)
+                                builder.setPositiveButton("확인"){ _: DialogInterface, _: Int ->
+                                    startActivity(Intent(this, Main2Activity::class.java))
+                                }
                                 builder.show()
-                                startActivity(Intent(this, Main2Activity::class.java))
+
                             }
                         }
                     }
