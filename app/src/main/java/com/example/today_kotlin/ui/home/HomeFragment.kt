@@ -1,14 +1,17 @@
 package com.example.today_kotlin.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.today_kotlin.R
+import com.example.today_kotlin.writeActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -30,12 +33,15 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
         val textView: TextView = root.findViewById(R.id.text_home)
         val user = Firebase.auth.currentUser
         val db = Firebase.firestore
+        val communityBtn: Button = root.findViewById(R.id.communityBtn)
+        communityBtn.setOnClickListener {
+            startActivity(Intent(activity, writeActivity::class.java))
+        }
         val docRef = db.collection("users").document(user.uid)
         docRef.get()
             .addOnSuccessListener { document ->
@@ -65,9 +71,10 @@ class HomeFragment : Fragment() {
                 }
             }
 
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = "Asdfasdf"
-        })
+        /*homeViewModel.text.observe(viewLifecycleOwner, Observer {
+            textView.text = ""
+        }) */
         return root
+
     }
 }

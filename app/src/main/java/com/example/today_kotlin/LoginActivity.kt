@@ -38,7 +38,8 @@ class LoginActivity: AppCompatActivity() {
     }
     override fun onStart() {
         super.onStart()
-        val currentUser = auth.currentUser
+        var currentUser = auth.currentUser
+        currentUser = null
         if(currentUser != null) {
             startActivity(Intent(this, subActivity::class.java))
         }
