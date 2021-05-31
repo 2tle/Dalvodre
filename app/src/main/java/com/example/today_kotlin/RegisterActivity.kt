@@ -1,5 +1,6 @@
 package com.example.today_kotlin
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -77,7 +78,14 @@ class RegisterActivity : AppCompatActivity() {
                                     "listWords" to listWords
                                 )
                                 db.collection("users").document(user.uid).set(firestoreData).addOnSuccessListener {
-                                    startActivity(Intent(this, subActivity::class.java))
+                                    builder.setTitle("회원가입 오류")
+                                    builder.setMessage("회원가입에 실패하였습니다. 관리자에게 문의하세요.")
+                                    builder.setPositiveButton("확인"){ _: DialogInterface, _: Int ->
+                                        startActivity(Intent(this, subActivity::class.java))
+                                    }
+                                    builder.show()
+
+
                                 }
 
                             }

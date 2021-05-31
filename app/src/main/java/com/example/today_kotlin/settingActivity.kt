@@ -1,5 +1,6 @@
 package com.example.today_kotlin
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -65,9 +66,11 @@ class settingActivity : AppCompatActivity() {
                                 val builder = AlertDialog.Builder(this)
                                 builder.setTitle("정보 변경 완료")
                                 builder.setMessage("회원님의 정보가 변경되었습니다.")
-                                builder.setPositiveButton("확인",null)
+                                builder.setPositiveButton("확인"){ _: DialogInterface, _: Int ->
+                                    startActivity(Intent(this, Main2Activity::class.java))
+                                }
                                 builder.show()
-                                startActivity(Intent(this, Main2Activity::class.java))
+
                             }
                         }
                     }

@@ -98,7 +98,7 @@ class writeActivity : AppCompatActivity() {
             val builder = AlertDialog.Builder(this)
             builder.setTitle("업로드 성공")
             builder.setMessage("너나들이에 성공적으로 포스트가 업로드 되었습니다.")
-            builder.setPositiveButton("확인"){ dialogInterface: DialogInterface, i: Int ->
+            builder.setPositiveButton("확인"){ _: DialogInterface, _: Int ->
                 startActivity(Intent(this, Main2Activity::class.java))
             }
             builder.show()
