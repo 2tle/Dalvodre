@@ -42,13 +42,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <ImageButton
                         android:id="@+id/profile1"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/profile1"
                         android:adjustViewBounds="true"
-                        android:scaleType="fitCenter"/>
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/profile1" />
+
                     <ImageButton
                         android:id="@+id/profile2"
                         android:layout_width="100dp"
