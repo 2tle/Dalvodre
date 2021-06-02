@@ -69,7 +69,6 @@ class HomeFragment : Fragment() {
                                 "listWords" to listWords,
                                 "listDates" to listDates
                             )
-                            //Log.d("<<>>",firestoreData.toString());
                             db.collection("users").document(user.uid).set(firestoreData).addOnSuccessListener {
                                 homeViewModel.text.observe(viewLifecycleOwner, Observer {
                                     textView.text = todayWords
