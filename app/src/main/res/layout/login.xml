@@ -36,7 +36,7 @@
     <EditText
         android:id="@+id/email"
         android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/loginimg"
         android:layout_marginTop="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -49,14 +49,13 @@
     <EditText
         android:id="@+id/pw"
         android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/email"
-        android:layout_marginTop="0dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        android:gravity="top|left"
         android:hint="Password"
         android:inputType="textPassword"
-
         >
     </EditText>
 
