@@ -30,7 +30,7 @@
         android:layout_width="340dp"
         android:layout_height="340dp"
         android:layout_marginTop="30dp"
-        android:background=""
+        android:background="@null"
         android:gravity="center"
         android:text="오늘의 한마디"
         android:textSize="40dp"
@@ -38,7 +38,7 @@
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/community_imageview" />
+        app:layout_constraintTop_toTopOf="@id/community_imageview"/>
 
     <ImageButton
         android:id="@+id/community_imagebutton"
@@ -88,4 +88,14 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="@id/community_date"/>
+    
+    <TextView
+        android:id="@+id/documentID"
+        android:text=""
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/community_usertext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 </androidx.constraintlayout.widget.ConstraintLayout>
