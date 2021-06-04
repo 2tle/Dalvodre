@@ -1,95 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <ImageView
-        android:id="@+id/community_imageview"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/profile1" />
-    <TextView
-        android:id="@+id/community_username"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/community_imageview"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="38dp"
-        android:layout_gravity="center"
-        android:text="*username*"
-        android:textSize="22dp"/>
-
+        android:orientation="horizontal"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp">
+        <ImageView
+            android:id="@+id/community_imageview"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/profile1" />
+        <TextView
+            android:id="@+id/community_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:text="*username*"
+            android:textSize="22dp"/>
+    </LinearLayout>
     <TextView
         android:id="@+id/community_text"
         android:layout_width="340dp"
         android:layout_height="340dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:background="@null"
         android:gravity="center"
+        android:layout_gravity="center"
         android:text="오늘의 한마디"
-        android:textSize="40dp"
-        app:layout_constraintBottom_toBottomOf="@id/community_like"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/community_imageview"/>
+        android:textSize="40dp"/>
 
-    <ImageButton
-        android:id="@+id/community_imagebutton"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:backgroundTint="#00ff0000"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_heart"
-        android:layout_marginTop="145dp"
-        android:layout_marginLeft="25dp"
-        app:layout_constraintBottom_toBottomOf="@id/community_usertext"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@id/community_text" />
-
-    <TextView
-        android:id="@+id/community_like"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="좋아요 갯수"
-        android:textSize="15sp"
-        android:layout_marginRight="130dp"
-        android:layout_marginTop="140dp"
-        app:layout_constraintBottom_toBottomOf="@id/community_usertext"
-        app:layout_constraintLeft_toLeftOf="@id/community_imagebutton"
-        app:layout_constraintRight_toRightOf="@id/community_date"
-        app:layout_constraintTop_toTopOf="@id/community_text" />
+        android:orientation="horizontal"
+        android:layout_marginLeft="34dp">
+        <ImageButton
+            android:id="@+id/community_imagebutton"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:backgroundTint="#00ff0000"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_heart"
+            />
 
-    <TextView
-        android:id="@+id/community_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="190dp"
-        android:text="날짜"
-        android:layout_marginTop="140dp"
-        app:layout_constraintBottom_toBottomOf="@id/community_usertext"
-        app:layout_constraintLeft_toLeftOf="@id/community_like"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/community_text" />
+        <TextView
+            android:id="@+id/community_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="좋아요 갯수"
+            android:textSize="15sp"
+            android:layout_marginTop="18dp"/>
+
+        <TextView
+            android:id="@+id/community_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="날짜"
+            android:layout_marginTop="18dp"
+            android:layout_marginLeft="187dp"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/community_usertext"
         android:layout_width="330dp"
-        android:layout_height="180dp"
+        android:layout_height="120dp"
         android:text="유저가 쓴 글"
-        android:layout_marginBottom="80dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@id/community_date"/>
-    
+        android:layout_gravity="center"/>
+
     <TextView
         android:id="@+id/documentID"
         android:text=""
@@ -99,4 +84,4 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
