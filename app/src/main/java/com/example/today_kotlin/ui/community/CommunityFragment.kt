@@ -40,7 +40,7 @@ class CommunityFragment : Fragment() {
                 for(document in result) {
                     val doc = document.data
                     add(CommunityData(Integer.parseInt(doc?.get("backgroundType").toString()), doc?.get("date") as String, doc?.get("name") as String,
-                        doc?.get("profileId") as String, doc?.get("text") as String, doc?.get("words") as String, "", doc?.get("heart") as ArrayList<String>, document.id))
+                        doc?.get("profileId") as String, doc?.get("text") as String, doc?.get("words") as String, doc?.get("uid") as String, doc?.get("heart") as ArrayList<String>, document.id))
                 }
                 CommunityAdapter1.dates = list1
                 CommunityAdapter1.notifyDataSetChanged()
