@@ -21,7 +21,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="70dp"
                 android:layout_marginLeft="40dp"
                 android:text="내 정보 설정"
                 android:textSize="35sp"/>
@@ -96,7 +96,8 @@
                 android:inputType="text"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:hint="최대 8자 입력"/>
+                android:hint="최대 8자 입력"
+                android:maxLength="9"/>
             <TextView
                 android:id="@+id/settext3"
                 android:layout_width="wrap_content"
