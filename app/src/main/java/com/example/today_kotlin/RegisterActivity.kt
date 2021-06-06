@@ -42,88 +42,82 @@ class RegisterActivity : AppCompatActivity() {
         val name = findViewById<EditText>(R.id.username)
         val regBtn = findViewById<Button>(R.id.regBtn)
         val ccBtn = findViewById<Button>(R.id.ccBtn)
-        val emailValidation = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
-        var check1=false
-        var check2=false
-        var check3=false
-        var check4=false //여기까지 선언, 마지막은 이메일 형식을 검사할 정규식이다
+        val emailValidation =
+            "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
+        var check1 = false
+        var check2 = false
+        var check3 = false
+        var check4 = false //여기까지 선언
 
 
         ccBtn.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
         } //취소 버튼 눌렀을 때 다시 로그인 화면으로 돌아가기
 
-        pw.addTextChangedListener(object : TextWatcher{
-            override fun afterTextChanged(s: Editable?){
-                //텍스트를 입력 후
+        pw.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?){ //텍스트 입력 후 일어나는 일. 없는데 안쓰면 오류나서 같이 넣음
             }
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count:Int, after:Int){
-                //텍스트 입력 전 이거 두개는 필요 없지만 안쓰면 오류남
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { //텍스트 입력 전 일어나는 일, 없는데 안쓰면 오류나서 같이 넣음
             }
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (pw.length() > 8 && !pw.equals("")) {
-                    check1 = true
-                }
-                else
-                    check1= false
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { //텍스트 입력 중 일어나는 일, 올바르게 작성시 check1을 true로 반환한다
+                check1 = pw.length() >= 8 && pw != null
             }
         }) //비밀번호 8자 이하거나 공백이면 회원가입 불가
 
-        pwCheck.addTextChangedListener(object : TextWatcher{
-            override fun afterTextChanged(s: Editable?){
-
+        pwCheck.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                check2 = pw.text.toString() == pwCheck.text.toString() && pwCheck != null //형식에 맞으면 check2를 true로 반환
             }
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count:Int, after:Int){
 
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if(pwCheck==pw && !pwCheck.equals("")){
-                    check2 = true
-                }
-                else
-                    check2= false
             }
         }) //비밀번호 재확인에서 위의 비밀번호와 다르거나 공백이면 회원가입 불가
 
 
         fun checkEmail() {
             var email = email.text.toString().trim() //공백제거
-            val p = Pattern.matches(emailValidation, email) // 서로 패턴이 맞닝?
-            if (p) {
-                //email.toColor(gray)
-                check3=true
-            }
-            else
-                check3= false
+            val p = Pattern.matches(emailValidation, email) // 입력된 이메일이 주어진 형식에 맞는지 확인
+            check3 = p //형식에 맞으면 check3을 true로 반환
         } //이메일 판단 함수
 
-       email.addTextChangedListener(object : TextWatcher{
-            override fun afterTextChanged(s: Editable?){
-
+        email.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
             }
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count:Int, after:Int){
 
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 checkEmail()
             }
         }) //이메일 형식 오류시 회원가입 불가
 
-        name.addTextChangedListener(object : TextWatcher{
-            override fun afterTextChanged(s: Editable?){
-
+        name.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
             }
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count:Int, after:Int){
 
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if(name.length()<8 && !name.equals(" ")){
-                    check4 = true
-                }
-                else
-                    check4= false
+                check4 = name.length() < 8 && !name.equals(" ") //형식에 맞으면 check4를 true로 반환
             }
         }) //이름이 8자 초과이거나 공백 포함인경우 회원가입 불가
+
+        if (check2 && check1 && check3 && check4) { //모두 true라면 버튼 활성화, 아니라면 비활성화 유지
+            regBtn.isClickable = true
+            regBtn.isEnabled = true
+        } else {
+            regBtn.isClickable = false
+            regBtn.isEnabled = false
+        }
+        regBtn.setOnClickListener{
+            createAccount(email.text.toString(),pw.text.toString(), name.text.toString()) } //버튼 눌렀을 때 저장됨
     }
 
     /*val builder = AlertDialog.Builder(this)
