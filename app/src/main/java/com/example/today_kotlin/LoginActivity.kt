@@ -19,7 +19,7 @@ class LoginActivity: AppCompatActivity() {
         val loginBtn = findViewById<Button>(R.id.loginBtn)
         val regBtn = findViewById<Button>(R.id.register)
         val email = findViewById<EditText>(R.id.email)
-        val pw = findViewById<EditText>(R.id.pw)
+        val pw = findViewById<EditText>(R.id.pw) //여기까지 선언
 
         val builder = AlertDialog.Builder(this)
         builder.setTitle("로그인 오류")

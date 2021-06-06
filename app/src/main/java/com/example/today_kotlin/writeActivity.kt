@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import com.example.today_kotlin.ui.community.CommunityFragment
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -108,7 +109,9 @@ class writeActivity : AppCompatActivity() {
                 startActivity(Intent(this, Main2Activity::class.java))
             }
             builder.show()
-
+            /**val intent = Intent(this, CommunityFragment::class.java)
+            startActivity(intent)**/
+            //이거는 포스트 업로드 되었습니다->확인->누르면 커뮤니티로 부드럽게 넘어가게 하려고 해둔건데 될지 모르니까 함 해보세요
         }
 
     }
