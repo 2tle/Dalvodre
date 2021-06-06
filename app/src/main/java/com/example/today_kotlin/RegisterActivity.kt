@@ -157,18 +157,26 @@ class RegisterActivity : AppCompatActivity() {
                             val docu = db.collection("words").document("mGHEB2dhXFQkPF8KJww2")
                             docu.get().addOnSuccessListener { document ->
                                 val wordList: ArrayList<String> = document.data?.get("words") as ArrayList<String>
+                                val itemList: ArrayList<String> = document.data?.get("itemName") as ArrayList<String>
+                                val itemSrc: ArrayList<String> = document.data?.get("itemSrc") as ArrayList<String>
+                                val itemIdx = Random().nextInt(itemList.size)
+                                val todayItem: String = itemList.get(itemIdx)
+                                val todayItemSrc: String = itemSrc.get(itemIdx)
                                 val todayWords: String = wordList.get(Random().nextInt(wordList.size))
                                 val listWords: ArrayList<String> = arrayListOf()
                                 val listDates: ArrayList<String> = arrayListOf()
+
                                 listWords.add(todayWords)
                                 listDates.add(LocalDateTime.now().format(DateTimeFormatter.ISO_DATE).toString())
                                 val firestoreData = hashMapOf(
                                     "date" to LocalDateTime.now().format(DateTimeFormatter.ISO_DATE),
                                     "todayWords" to todayWords,
                                     "listWords" to listWords,
-                                    "listDates" to listDates
+                                    "listDates" to listDates,
+                                    "item" to todayItem,
+                                    "itemSrc" to todayItemSrc
                                 )
-                                //Log.d("<<>>",firestoreData.toString());
+
                                 db.collection("users").document(user.uid).set(firestoreData).addOnSuccessListener {
                                     builder.setTitle("회원가입 성공")
                                     builder.setMessage("회원가입에 성공하였습니다. 감사합니다.")
