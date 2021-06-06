@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
@@ -35,19 +35,26 @@
             android:layout_gravity="center"
             android:layout_marginLeft="15dp"
             android:text="*username*"
-            android:textSize="22dp" />
+            android:textSize="18dp"
+            android:textColor="@color/black"/>
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E4E1E1"
+        android:layout_marginTop="10dp"/>
 
     <TextView
         android:id="@+id/community_text"
         android:layout_width="340dp"
         android:layout_height="340dp"
         android:layout_gravity="center"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:background="@null"
         android:gravity="center"
         android:text="오늘의 한마디"
-        android:textSize="40dp" />
+        android:textSize="40dp"
+        android:textColor="@color/black"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -68,17 +75,19 @@
             android:id="@+id/community_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_gravity="center"
             android:text="좋아요 갯수"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/community_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="187dp"
-            android:layout_marginTop="18dp"
-            android:text="날짜" />
+            android:layout_marginLeft="210dp"
+            android:layout_gravity="center"
+            android:text="날짜"
+            android:textColor="@color/black"/>
     </LinearLayout>
 
     <TextView
@@ -87,7 +96,9 @@
         android:layout_height="120dp"
         android:layout_marginTop="5dp"
         android:layout_gravity="center"
-        android:text="유저가 쓴 글" />
+        android:text="유저가 쓴 글"
+        android:textSize="17sp"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/documentID"
@@ -98,4 +109,8 @@
         app:layout_constraintBottom_toTopOf="@id/community_usertext"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E4E1E1"/>
 </LinearLayout>
