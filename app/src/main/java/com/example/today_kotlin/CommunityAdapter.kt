@@ -121,7 +121,7 @@ class CommunityAdapter(private val context: Context): RecyclerView.Adapter<Commu
             // item.heart 리스트에 본인id 있으면, 그때는 색칠해서 넣기
             // 하트버튼 구현하기
 
-        } //근데 이건 정상적으로 될껄 안되면 이전보다 심각한건데
+        }
     }
 
 }

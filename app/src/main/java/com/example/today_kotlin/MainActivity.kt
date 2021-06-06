@@ -18,18 +18,18 @@ class MainActivity : AppCompatActivity() {
         val dateAndtime: LocalDateTime = LocalDateTime.now()
         val formatter = DateTimeFormatter.ofPattern("HH")
         val formatted = dateAndtime.format(formatter)
-        val background = findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.background)
+        val background = findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.background) //여기까지 선언
 
         if(formatted.toInt() in 5..18)
             background.setBackgroundResource(R.drawable.not)
         else if(formatted.toInt() in 16..21)
-            background.setBackgroundResource(R.drawable.dinner)
+            background.setBackgroundResource(R.drawable.dinner) //시간에 따라 테마 변경
 
         handler.postDelayed({
             val intent = Intent(baseContext, LoginActivity::class.java)
             startActivity(intent)
             finish()
-        }, 3000)
+        }, 3000) //화면이 잠깐 보이게 설정
 
     }
 }
