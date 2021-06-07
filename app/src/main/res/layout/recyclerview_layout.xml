@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--그동안의 한마디 layout-->
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -17,9 +16,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         />
-    <!--orientation=vertical : recyclerview 내의 레이아웃들을 세로로 정렬-->
-    <!--layoutManger : 재사용 정책 및 정렬 등등 관리-->
-    <!--tools:listitem=... : recyclerview에 들어가는 아이템에 imagetext_recyclerview 추가-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

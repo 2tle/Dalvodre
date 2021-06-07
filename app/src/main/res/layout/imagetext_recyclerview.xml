@@ -14,25 +14,25 @@
         android:id="@+id/text_ex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:text="*그동안의 한마디*"
         android:textColor="@color/black"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="15dp"/>
+        android:layout_marginStart="15dp"/>
 
     <TextView
         android:id="@+id/date_ex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:text="2021/05/31"
         android:textColor="#9C27B0"
         app:layout_constraintTop_toBottomOf="@id/text_ex"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="290dp"
+        android:layout_marginStart="290dp"
         android:layout_marginTop="10dp"/>
     <!--textView : 그동안의 한마디들이 들어감-->
 

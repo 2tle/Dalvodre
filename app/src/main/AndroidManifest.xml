@@ -15,15 +15,15 @@
         android:hardwareAccelerated="false"
         android:theme="@style/Theme.Today_kotlin">
         <activity android:name=".NavHeaderActivity" />
-        <activity android:name=".writeActivity" />
-        <activity android:name=".settingActivity" />
+        <activity android:name=".WriteActivity" />
+        <activity android:name=".SettingActivity" />
 
 
         <activity
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
             android:theme="@style/Theme.Today_kotlin.NoActionBar" />
-        <activity android:name=".subActivity" />
+        <activity android:name=".SubActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

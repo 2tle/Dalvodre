@@ -9,7 +9,6 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import com.example.today_kotlin.ui.community.CommunityFragment
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -21,7 +20,7 @@ import kotlin.collections.ArrayList
 @Suppress("RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS",
     "NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS", "UNCHECKED_CAST"
 )
-class writeActivity : AppCompatActivity() {
+class WriteActivity : AppCompatActivity() {
 
     @SuppressLint("CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +34,7 @@ class writeActivity : AppCompatActivity() {
         val sendBtn = findViewById<ImageButton>(R.id.ic_send)
         val words: TextView = findViewById(R.id.write_word)
         val text = findViewById<EditText>(R.id.write_post)
-        var backgroundType: Int = 0
+        var backgroundType = 0
         val user = Firebase.auth.currentUser
 
         if(formatted.toInt() in 5..18) {
@@ -75,7 +74,6 @@ class writeActivity : AppCompatActivity() {
                             "listWords" to listWords,
                             "listDates" to listDates
                         )
-                        //Log.d("<<>>",firestoreData.toString());
                         db.collection("users").document(user.uid).set(firestoreData).addOnSuccessListener {
                             words.text = todayWords
 
@@ -102,17 +100,21 @@ class writeActivity : AppCompatActivity() {
             "date" to LocalDateTime.now().format(DateTimeFormatter.ISO_DATE)
         )
         db.collection("posts").document().set(data).addOnSuccessListener {
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("업로드 성공")
-            builder.setMessage("너나들이에 성공적으로 포스트가 업로드 되었습니다.")
-            builder.setPositiveButton("확인"){ _: DialogInterface, _: Int ->
-                startActivity(Intent(this, Main2Activity::class.java))
-            }
-            builder.show()
-            /**val intent = Intent(this, CommunityFragment::class.java)
-            startActivity(intent)**/
-            //이거는 포스트 업로드 되었습니다->확인->누르면 커뮤니티로 부드럽게 넘어가게 하려고 해둔건데 될지 모르니까 함 해보세요
+            showAlertDialog("포스팅 성공","너나들이에 포스트 작성이 완료되었습니다.",true)
         }
 
+    }
+
+    fun showAlertDialog(title: String, message: String, isPositiveBtnListener: Boolean ) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(title)
+        builder.setMessage(message)
+        if(isPositiveBtnListener) {
+            builder.setPositiveButton("확인") { _: DialogInterface, _: Int ->
+                startActivity(Intent(this, Main2Activity::class.java))
+            }
+        }
+        else builder.setPositiveButton("확인", null);
+        builder.show()
     }
 }

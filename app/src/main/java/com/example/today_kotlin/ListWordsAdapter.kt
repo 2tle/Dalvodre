@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.today_kotlin.ui.save.SaveFragment
 
 class ListWordsAdapter(private val context: Context) : RecyclerView.Adapter<ListWordsAdapter.ViewHolder>() {
     var dates = mutableListOf<ListWordsData>()

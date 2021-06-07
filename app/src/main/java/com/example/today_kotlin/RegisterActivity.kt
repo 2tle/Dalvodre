@@ -2,21 +2,14 @@ package com.example.today_kotlin
 
 import android.content.DialogInterface
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.Color.blue
-import android.graphics.Color.red
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.toColorInt
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
@@ -42,8 +35,7 @@ class RegisterActivity : AppCompatActivity() {
         val name = findViewById<EditText>(R.id.username)
         val regBtn = findViewById<Button>(R.id.regBtn)
         val ccBtn = findViewById<Button>(R.id.ccBtn)
-        val emailValidation =
-            "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
+        val emailValidation = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
         var check1 = false
         var check2 = false
         var check3 = false
@@ -80,7 +72,7 @@ class RegisterActivity : AppCompatActivity() {
 
 
         fun checkEmail() {
-            var email = email.text.toString().trim() //공백제거
+            val email = email.text.toString().trim() //공백제거
             val p = Pattern.matches(emailValidation, email) // 입력된 이메일이 주어진 형식에 맞는지 확인
             check3 = p //형식에 맞으면 check3을 true로 반환
         } //이메일 판단 함수
@@ -117,46 +109,45 @@ class RegisterActivity : AppCompatActivity() {
             regBtn.isEnabled = false
         }
         regBtn.setOnClickListener{
-            createAccount(email.text.toString(),pw.text.toString(), name.text.toString()) } //버튼 눌렀을 때 저장됨
+            createAccount(email.text.toString(),pw.text.toString(), name.text.toString())
+        } //버튼 눌렀을 때 저장됨
     }
 
-    /*val builder = AlertDialog.Builder(this)
-        builder.setTitle("회원가입 오류")
-        builder.setMessage("형식에 맞게 입력해주세요.")
-        builder.setPositiveButton("확인", null) //형식 오류
-        regBtn.setOnClickListener {
-            if(pw.text.toString() != "" && pw.text.toString() == pwCheck.text.toString() && email.text.toString() != "" && name.text.toString() != "")
-                createAccount(email.text.toString(),pw.text.toString(), name.text.toString())
-            else {
-                builder.show()
-                }
+    private fun showAlertDialog(title: String, message: String, isPositiveBtnListener: Boolean ) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(title)
+        builder.setMessage(message)
+        if(isPositiveBtnListener) {
+            builder.setPositiveButton("확인") { _: DialogInterface, _: Int ->
+                startActivity(Intent(this, SubActivity::class.java))
             }
-        } //회원가입 버튼을 눌렀을 때 형식에 맞는지 확인하고 파베에 데이터 넣기 아니라면 형식오류 출력 예전꺼임
-    }*/
+        }
+        else builder.setPositiveButton("확인", null)
+        builder.show()
+    }
 
     private fun createAccount(email: String, password: String, name: String) {
         val db = Firebase.firestore
-        val builder = AlertDialog.Builder(this)
         auth.createUserWithEmailAndPassword(email, password) //파베에 있는 email password 불러오기
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) { //성공적일 경우 수행되는 일들
                     val user = auth.currentUser // user는 파베의 올바른 user가 됨
-                    val profileCreateOrUpdates = userProfileChangeRequest {
+                    val profileCreateOrUpdates = userProfileChangeRequest { //표시되는 이름(닉네임) 및 프로필 사진의 URL 지정
                         displayName=name
-                        photoUri=Uri.parse("https://firebasestorage.googleapis.com/v0/b/today-kotlin.appspot.com/o/profile0.png?alt=media&token=1aee06c2-42d3-4700-b72c-8e2bc71227f1"); //그래서 이름이랑 사진 불러옴
+                        photoUri=Uri.parse("https://firebasestorage.googleapis.com/v0/b/today-kotlin.appspot.com/o/profile0.png?alt=media&token=1aee06c2-42d3-4700-b72c-8e2bc71227f1") //그래서 이름이랑 사진 불러옴
                     }
-                    user!!.updateProfile(profileCreateOrUpdates) //여기부터 이해안됨,,,누군가 이 주석을 보고 있다면 스피드왜건처럼 설명을 달아주세요
+                    user!!.updateProfile(profileCreateOrUpdates) //파이어베이스 Auth에서 제공하는 프로필을 업데이트 하는 과정
                         .addOnCompleteListener { task ->
                         if(task.isSuccessful) {
-                            val docu = db.collection("words").document("mGHEB2dhXFQkPF8KJww2")
-                            docu.get().addOnSuccessListener { document ->
+                            val docu = db.collection("words").document("mGHEB2dhXFQkPF8KJww2") // Firestore에서 행운아이템 및 오늘의 한마디가 지정되어 있는 문서 받아옴
+                            docu.get().addOnSuccessListener { document ->                                                  // 이건 파이어베이스 안보면 이해 못함
                                 val wordList: ArrayList<String> = document.data?.get("words") as ArrayList<String>
                                 val itemList: ArrayList<String> = document.data?.get("itemName") as ArrayList<String>
                                 val itemSrc: ArrayList<String> = document.data?.get("itemSrc") as ArrayList<String>
                                 val itemIdx = Random().nextInt(itemList.size)
-                                val todayItem: String = itemList.get(itemIdx)
-                                val todayItemSrc: String = itemSrc.get(itemIdx)
-                                val todayWords: String = wordList.get(Random().nextInt(wordList.size))
+                                val todayItem: String = itemList[itemIdx]
+                                val todayItemSrc: String = itemSrc[itemIdx]
+                                val todayWords: String = wordList[Random().nextInt(wordList.size)]
                                 val listWords: ArrayList<String> = arrayListOf()
                                 val listDates: ArrayList<String> = arrayListOf()
 
@@ -171,32 +162,19 @@ class RegisterActivity : AppCompatActivity() {
                                     "itemSrc" to todayItemSrc
                                 )
 
-                                db.collection("users").document(user.uid).set(firestoreData).addOnSuccessListener {
-                                    builder.setTitle("회원가입 성공")
-                                    builder.setMessage("회원가입에 성공하였습니다. 감사합니다.")
-                                    builder.setPositiveButton("확인"){ _: DialogInterface, _: Int ->
-                                        startActivity(Intent(this, subActivity::class.java))
-                                    }
-                                    builder.show() //성공했을 때 보이는 단어
-
-
+                                db.collection("users").document(user.uid).set(firestoreData).addOnSuccessListener { //Firestore에 사용자의 행운아이템 및 오늘의한마디 문서 생성(업데이트)
+                                    showAlertDialog("회원가입 성공","회원이 되신 것을 축하드립니다!", true)
                                 }
 
                             }
 
                         } else {
-                            builder.setTitle("회원가입 오류")
-                            builder.setMessage("회원가입에 실패하였습니다. 관리자에게 문의하세요.")
-                            builder.setPositiveButton("확인", null)
-                            builder.show() //안에 있는 if문을 만족시키지 못했을 경우 발생
+                            showAlertDialog("회원가입 오류","회원가입에 실패하였습니다. 나중에 다시 시도하여주세요.", false)
                         }
                     }
 
                 } else {
-                    builder.setTitle("회원가입 오류")
-                    builder.setMessage("회원가입에 실패하였습니다. 관리자에게 문의하세요.")
-                    builder.setPositiveButton("확인", null)
-                    builder.show() //밖의 if문을 만족시키지 못했을 경우 발생
+                    showAlertDialog("회원가입 오류","회원가입에 실패하였습니다. 나중에 다시 시도하여주세요.", false)
                 }
             }
     }

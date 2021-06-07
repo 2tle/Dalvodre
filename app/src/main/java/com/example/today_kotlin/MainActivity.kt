@@ -15,9 +15,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val handler = Handler(Looper.myLooper()!!)
-        val dateAndtime: LocalDateTime = LocalDateTime.now()
+        val dateTime: LocalDateTime = LocalDateTime.now()
         val formatter = DateTimeFormatter.ofPattern("HH")
-        val formatted = dateAndtime.format(formatter)
+        val formatted = dateTime.format(formatter)
         val background = findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.background) //여기까지 선언
 
         if(formatted.toInt() in 5..18)

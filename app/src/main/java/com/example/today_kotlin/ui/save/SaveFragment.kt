@@ -17,7 +17,6 @@ import com.google.firebase.ktx.Firebase
 class SaveFragment : Fragment() {
 
     private lateinit var saveViewModel: SaveViewModel
-    lateinit var listWordsAdapter: ListWordsAdapter
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,7 +28,6 @@ class SaveFragment : Fragment() {
         val listWordsAdapter = ListWordsAdapter(requireContext())
         val recycler = root.findViewById<RecyclerView>(R.id.recycler)
         recycler.adapter = listWordsAdapter
-        //val list1 = ArrayList<ListWordsData>()
         val list1 = mutableListOf<ListWordsData>()
         val user = Firebase.auth.currentUser
         val db = Firebase.firestore

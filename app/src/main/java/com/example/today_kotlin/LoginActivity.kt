@@ -21,13 +21,9 @@ class LoginActivity: AppCompatActivity() {
         val email = findViewById<EditText>(R.id.email)
         val pw = findViewById<EditText>(R.id.pw) //여기까지 선언
 
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("로그인 오류")
-        builder.setMessage("아이디 혹은 비밀번호를 확인해주세요.")
-        builder.setPositiveButton("확인", null)
         loginBtn.setOnClickListener {
             if(email.text.toString() == "" || pw.text.toString() == "") {
-                builder.show()
+                showAlertDialog("로그인 오류","이메일 혹은 비밀번호를 입력해주세요.")
             }else {signIn(email.text.toString(),pw.text.toString())}
         }
         regBtn.setOnClickListener {
@@ -36,29 +32,35 @@ class LoginActivity: AppCompatActivity() {
         }
 
     }
+
+    private fun showAlertDialog(title:String, message:String) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(title)
+        builder.setMessage(message)
+        builder.setPositiveButton("확인", null)
+        builder.show()
+    }
+
+
     override fun onStart() {
         super.onStart()
-        var currentUser = auth.currentUser
-        currentUser = null
+        val currentUser = auth.currentUser
         if(currentUser != null) {
-            startActivity(Intent(this, subActivity::class.java))
+            startActivity(Intent(this, SubActivity::class.java))
         }
     }
 
     private fun signIn(email: String, password: String) {
-        val builder = AlertDialog.Builder(this)
         auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        val user = auth.currentUser
-                        startActivity(Intent(this, subActivity::class.java))
-                    } else {
-                        builder.setTitle("로그인 오류")
-                        builder.setMessage("아이디 혹은 비밀번호를 확인해주세요.")
-                        builder.setPositiveButton("확인", null)
-                        builder.show()
-                    }
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    startActivity(Intent(this, SubActivity::class.java))
+                } else {
+                    showAlertDialog("로그인 오류","서버상의 문제가 발생했습니다. 나중에 다시 시도해주세요.")
                 }
+            }.addOnFailureListener {
+                showAlertDialog("로그인 오류","서버상의 문제가 발생했습니다. 나중에 다시 시도해주세요.")
+            }
     }
 
 }

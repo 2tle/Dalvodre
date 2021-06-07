@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.today_kotlin.R.drawable
@@ -15,10 +14,9 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import org.w3c.dom.Text
-import java.util.*
 import kotlin.collections.ArrayList
 
+@Suppress("UNCHECKED_CAST")
 class CommunityAdapter(private val context: Context): RecyclerView.Adapter<CommunityAdapter.ViewHolder>() {
     var dates = mutableListOf<CommunityData>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommunityAdapter.ViewHolder {
@@ -45,7 +43,7 @@ class CommunityAdapter(private val context: Context): RecyclerView.Adapter<Commu
         private val text: TextView = itemView.findViewById(R.id.community_usertext)
         private val documentId: TextView = itemView.findViewById(R.id.documentID)
         fun bind(item: CommunityData) {
-            var storage: FirebaseStorage = FirebaseStorage.getInstance()
+            val storage: FirebaseStorage = FirebaseStorage.getInstance()
             val httpsReference = storage.getReferenceFromUrl(item.profileId)
             Glide.with(itemView).load(httpsReference).into(profileImgView)
             username.text = item.name
@@ -54,14 +52,18 @@ class CommunityAdapter(private val context: Context): RecyclerView.Adapter<Commu
             date.text = item.date
             text.text = item.text
             documentId.text = 0.toString()
-            if(item.backgroundType == 1) {
-                words.setBackgroundResource(drawable.not)
-            } else if (item.backgroundType == 2) {
-                words.setBackgroundResource(drawable.dinner)
-            } else {
-                words.setBackgroundResource(drawable.main)
+            when (item.backgroundType) {
+                1 -> {
+                    words.setBackgroundResource(drawable.not)
+                }
+                2 -> {
+                    words.setBackgroundResource(drawable.dinner)
+                }
+                else -> {
+                    words.setBackgroundResource(drawable.main)
+                }
             }
-            if(item.heart.contains(user.uid)) {
+            if(item.heart.contains(user?.uid)) {
                 heartBtn.setImageResource(drawable.ic_fullheart)
                 documentId.text = 1.toString()
             }
@@ -71,7 +73,7 @@ class CommunityAdapter(private val context: Context): RecyclerView.Adapter<Commu
                     docRef1.get().addOnSuccessListener { document1 ->
                         if(document1 != null) {
                             val heartList: ArrayList<String> = document1.data?.get("heart") as ArrayList<String>
-                            heartList.remove(user.uid)
+                            heartList.remove(user?.uid)
                             val data = hashMapOf(
                                 "heart" to heartList,
                                 "date" to item.date,
@@ -95,7 +97,7 @@ class CommunityAdapter(private val context: Context): RecyclerView.Adapter<Commu
                     docRef1.get().addOnSuccessListener { document1 ->
                         if(document1 != null) {
                             val heartList: ArrayList<String> = document1.data?.get("heart") as ArrayList<String>
-                            heartList.add(user.uid)
+                            heartList.add(user?.uid.toString())
                             val data = hashMapOf(
                                 "heart" to heartList,
                                 "date" to item.date,
@@ -118,8 +120,6 @@ class CommunityAdapter(private val context: Context): RecyclerView.Adapter<Commu
 
 
             }
-            // item.heart 리스트에 본인id 있으면, 그때는 색칠해서 넣기
-            // 하트버튼 구현하기
 
         }
     }

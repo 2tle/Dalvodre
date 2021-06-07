@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".subActivity">
+    tools:context=".SubActivity">
     <Button
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#00ff0000"
-        android:text='\"\n오늘의\n한마디\n확인하기\n\"\n\n\n'
+        android:text='오늘의\n한마디\n확인하기\n'
         android:textColor="#000000"
         android:textSize="40sp"
         android:id="@+id/subBtn"

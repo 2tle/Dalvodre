@@ -18,7 +18,6 @@ import androidx.appcompat.widget.Toolbar
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 
@@ -42,7 +41,6 @@ class Main2Activity : AppCompatActivity() {
                 R.id.nav_home, R.id.nav_save, R.id.nav_community
             ), drawerLayout
         )
-        var db = Firebase.firestore
         val user = Firebase.auth.currentUser
 
 
@@ -57,7 +55,7 @@ class Main2Activity : AppCompatActivity() {
 
 
         headerUsername.setOnClickListener {
-            startActivity(Intent(this, settingActivity::class.java))
+            startActivity(Intent(this, SettingActivity::class.java))
         }
 
         storage= FirebaseStorage.getInstance()
