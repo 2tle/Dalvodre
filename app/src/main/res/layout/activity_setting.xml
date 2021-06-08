@@ -97,6 +97,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:hint="최대 8자 입력"
+                android:text="nickname"
                 android:maxLength="8"/>
             <TextView
                 android:id="@+id/settext3"

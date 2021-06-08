@@ -33,6 +33,9 @@ class SettingActivity : AppCompatActivity() {
         val profilePwCh = findViewById<EditText>(R.id.set_pwch)
         val regBtn = findViewById<Button>(R.id.regBtn)
         val ccBtn = findViewById<Button>(R.id.ccBtn)
+        val nickName = findViewById<EditText>(R.id.set_username)
+        nickName.setText(user?.displayName)
+
         profileImageButton1.setOnClickListener {
             profileURL = "https://firebasestorage.googleapis.com/v0/b/today-kotlin.appspot.com/o/profile0.png?alt=media&token=1aee06c2-42d3-4700-b72c-8e2bc71227f1"
         }

@@ -36,12 +36,12 @@ class HomeFragment : Fragment() {
     ): View? {
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        val itemImgView: ImageView = root.findViewById(R.id.item_imageView)
-        val itemText: TextView = root.findViewById(R.id.item_nametext)
+        val textView = root.findViewById<TextView>(R.id.text_home)
+        val itemImgView = root.findViewById<ImageView>(R.id.item_imageView)
+        val itemText = root.findViewById<TextView>(R.id.item_nametext)
         val user = Firebase.auth.currentUser
         val db = Firebase.firestore
-        val communityBtn: Button = root.findViewById(R.id.communityBtn)
+        val communityBtn = root.findViewById<Button>(R.id.communityBtn)
         val dateTime: LocalDateTime = LocalDateTime.now()
         val formatter = DateTimeFormatter.ofPattern("HH")
         val formatted = dateTime.format(formatter)

@@ -43,7 +43,7 @@ class WriteActivity : AppCompatActivity() {
         }else if(formatted.toInt() in 16..21) {
             background.setBackgroundResource(R.drawable.dinner)
             backgroundType = 2
-        }
+        } //시간에 따른 테마 변경
 
         sendBtn.setOnClickListener{
             sendPost(user.uid,user.photoUrl.toString(),user.displayName, words.text.toString(), text.text.toString(), backgroundType );
