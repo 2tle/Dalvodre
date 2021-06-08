@@ -55,12 +55,26 @@ class RegisterActivity : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { //텍스트 입력 중 일어나는 일, 올바르게 작성시 check1을 true로 반환한다
                 check1 = pw.length() >= 8 && pw != null
+                if (check2 && check1 && check3 && check4) { //모두 true라면 버튼 활성화, 아니라면 비활성화 유지
+                    regBtn.isClickable = true
+                    regBtn.isEnabled = true
+                } else {
+                    regBtn.isClickable = false
+                    regBtn.isEnabled = false
+                }
             }
         }) //비밀번호 8자 이하거나 공백이면 회원가입 불가
 
         pwCheck.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 check2 = pw.text.toString() == pwCheck.text.toString() && pwCheck != null //형식에 맞으면 check2를 true로 반환
+                if (check2 && check1 && check3 && check4) { //모두 true라면 버튼 활성화, 아니라면 비활성화 유지
+                    regBtn.isClickable = true
+                    regBtn.isEnabled = true
+                } else {
+                    regBtn.isClickable = false
+                    regBtn.isEnabled = false
+                }
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -75,6 +89,13 @@ class RegisterActivity : AppCompatActivity() {
             val email = email.text.toString().trim() //공백제거
             val p = Pattern.matches(emailValidation, email) // 입력된 이메일이 주어진 형식에 맞는지 확인
             check3 = p //형식에 맞으면 check3을 true로 반환
+            if (check2 && check1 && check3 && check4) { //모두 true라면 버튼 활성화, 아니라면 비활성화 유지
+                regBtn.isClickable = true
+                regBtn.isEnabled = true
+            } else {
+                regBtn.isClickable = false
+                regBtn.isEnabled = false
+            }
         } //이메일 판단 함수
 
         email.addTextChangedListener(object : TextWatcher {
@@ -98,16 +119,16 @@ class RegisterActivity : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 check4 = name.length() < 8 && !name.equals(" ") //형식에 맞으면 check4를 true로 반환
+                if (check2 && check1 && check3 && check4) { //모두 true라면 버튼 활성화, 아니라면 비활성화 유지
+                    regBtn.isClickable = true
+                    regBtn.isEnabled = true
+                } else {
+                    regBtn.isClickable = false
+                    regBtn.isEnabled = false
+                }
             }
         }) //이름이 8자 초과이거나 공백 포함인경우 회원가입 불가
 
-        if (check2 && check1 && check3 && check4) { //모두 true라면 버튼 활성화, 아니라면 비활성화 유지
-            regBtn.isClickable = true
-            regBtn.isEnabled = true
-        } else {
-            regBtn.isClickable = false
-            regBtn.isEnabled = false
-        }
         regBtn.setOnClickListener{
             createAccount(email.text.toString(),pw.text.toString(), name.text.toString())
         } //버튼 눌렀을 때 저장됨
