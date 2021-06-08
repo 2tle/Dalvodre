@@ -16,6 +16,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -60,7 +62,10 @@ class Main2Activity : AppCompatActivity() {
 
         storage= FirebaseStorage.getInstance()
         val httpsReference = storage.getReferenceFromUrl(user?.photoUrl.toString())
-        Glide.with(this).load(httpsReference).into(headerIcon)
+        Glide.with(headerView).load(httpsReference).apply(
+            RequestOptions.bitmapTransform(
+            RoundedCorners(14)
+        )).into(headerIcon)
 
         headerUsername.text = user?.displayName
         headerEmail.text = user?.email

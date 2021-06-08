@@ -9,6 +9,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.example.today_kotlin.R.drawable
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -45,7 +47,10 @@ class CommunityAdapter(private val context: Context): RecyclerView.Adapter<Commu
         fun bind(item: CommunityData) {
             val storage: FirebaseStorage = FirebaseStorage.getInstance()
             val httpsReference = storage.getReferenceFromUrl(item.profileId)
-            Glide.with(itemView).load(httpsReference).into(profileImgView)
+            Glide.with(itemView).load(httpsReference).apply(
+                RequestOptions.bitmapTransform(
+                RoundedCorners(14)
+            )).into(profileImgView)
             username.text = item.name
             words.text = item.words
             heartCount.text = item.heart.size.toString()
