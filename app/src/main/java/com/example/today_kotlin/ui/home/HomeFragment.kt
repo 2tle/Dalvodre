@@ -42,6 +42,16 @@ class HomeFragment : Fragment() {
         val user = Firebase.auth.currentUser
         val db = Firebase.firestore
         val communityBtn: Button = root.findViewById(R.id.communityBtn)
+        val dateTime: LocalDateTime = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("HH")
+        val formatted = dateTime.format(formatter)
+        val background = root.findViewById<TextView>(R.id.text_home) //여기까지 선언
+
+        if(formatted.toInt() in 5..18)
+            background.setBackgroundResource(R.drawable.not)
+        else if(formatted.toInt() in 16..21)
+            background.setBackgroundResource(R.drawable.dinner) //시간에 따라 테마 변경
+
         communityBtn.setOnClickListener {
             startActivity(Intent(activity, WriteActivity::class.java))
         }
