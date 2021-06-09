@@ -24,7 +24,8 @@
                 android:layout_marginTop="70dp"
                 android:layout_marginLeft="40dp"
                 android:text="내 정보 설정"
-                android:textSize="35sp"/>
+                android:textSize="35sp"
+                android:textColor="#D5000000"/>
             <TextView
                 android:id="@+id/settext6"
                 android:layout_width="wrap_content"
@@ -32,6 +33,7 @@
                 android:layout_marginLeft="50dp"
                 android:text="프로필 사진"
                 android:textSize="20sp"
+                android:textColor="#494949"
                 android:layout_marginTop="30dp"/>
             <HorizontalScrollView
                 android:layout_width="370dp"
@@ -49,7 +51,8 @@
                         android:layout_height="100dp"
                         android:adjustViewBounds="true"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/profile1" />
+                        android:src="@drawable/profile1"
+                        />
 
                     <ImageButton
                         android:id="@+id/profile2"
@@ -88,7 +91,8 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="40dp"
                 android:text="닉네임"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                android:textColor="#494949"/>
             <EditText
                 android:id="@+id/set_username"
                 android:layout_width="300dp"
@@ -106,6 +110,7 @@
                 android:layout_marginLeft="50dp"
                 android:text="이메일"
                 android:textSize="20sp"
+                android:textColor="#494949"
                 android:layout_marginTop="40dp"/>
             <TextView
                 android:id="@+id/settext4"
@@ -122,7 +127,8 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="40dp"
                 android:text="비밀번호"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                android:textColor="#494949"/>
             <EditText
                 android:id="@+id/set_pw"
                 android:layout_width="300dp"
