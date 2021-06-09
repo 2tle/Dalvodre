@@ -22,12 +22,17 @@
         android:layout_width="320dp"
         android:layout_height="320dp"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:text="여기에 유저가\n받은 한마디"
-        android:textSize="40dp"
+        android:textSize="45dp"
         android:textColor="@color/black"
+        android:fontFamily="@font/cafe24_font"
         android:gravity="center"
-        android:background="@drawable/main"/>
+        android:shadowRadius="1.5"
+        android:shadowDx="5.5"
+        android:shadowDy="5.5"
+        android:shadowColor="#ffffff"
+        android:background="@drawable/not"/>
     <EditText
         android:id="@+id/write_post"
         android:layout_width="320dp"

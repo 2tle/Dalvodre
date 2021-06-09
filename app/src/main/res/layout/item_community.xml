@@ -55,9 +55,9 @@
         android:textSize="45sp"
         android:fontFamily="@font/cafe24_font"
         android:textColor="@color/black"
-        android:shadowRadius="2.0"
-        android:shadowDx="7.0"
-        android:shadowDy="7.0"
+        android:shadowRadius="1.5"
+        android:shadowDx="5.5"
+        android:shadowDy="5.5"
         android:shadowColor="#ffffff"/>
 
     <LinearLayout

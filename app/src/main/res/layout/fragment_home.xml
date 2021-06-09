@@ -21,9 +21,9 @@
             android:textColor="#000000"
             android:textSize="55sp"
             android:fontFamily="@font/cafe24_font"
-            android:shadowRadius="3.0"
-            android:shadowDx="7.0"
-            android:shadowDy="7.0"
+            android:shadowRadius="2.0"
+            android:shadowDx="5.5"
+            android:shadowDy="5.5"
             android:shadowColor="#ffffff"/>
         <ImageView
             android:layout_width="match_parent"
