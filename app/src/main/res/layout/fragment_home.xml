@@ -30,7 +30,7 @@
         android:content="@+id/content"
         android:handle="@+id/handle"
         android:orientation="vertical"
-        android:topOffset="60dp">
+        android:topOffset="70dp">
         <ImageView
             android:id="@+id/handle"
             android:layout_width="match_parent"

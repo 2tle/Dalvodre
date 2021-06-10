@@ -14,7 +14,7 @@
         android:id="@+id/text_ex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="23sp"
         android:text="*그동안의 한마디*"
         android:textColor="@color/black"
         android:fontFamily="@font/cafe24_font"
