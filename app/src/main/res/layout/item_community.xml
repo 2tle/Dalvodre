@@ -97,8 +97,10 @@
     <TextView
         android:id="@+id/community_usertext"
         android:layout_width="330dp"
-        android:layout_height="120dp"
+        android:layout_height="wrap_content"
+        android:minHeight="115dp"
         android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:layout_gravity="center"
         android:text="유저가 쓴 글"
         android:textSize="17sp"

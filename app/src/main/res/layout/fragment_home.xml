@@ -26,13 +26,11 @@
     <SlidingDrawer
         android:id="@+id/slidingdrawer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="match_parent"
         android:content="@+id/content"
         android:handle="@+id/handle"
         android:orientation="vertical"
-        android:topOffset="80dp">
+        android:topOffset="60dp">
         <ImageView
             android:id="@+id/handle"
             android:layout_width="match_parent"
