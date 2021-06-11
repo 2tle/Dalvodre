@@ -19,10 +19,8 @@
         android:layout_marginEnd="180dp"
         android:text="회원가입"
         android:textSize="35sp"
-        android:textColor="#D5000000"
-        >
+        android:textColor="#D5000000"/>
 
-    </TextView>
     <TextView
         android:id="@+id/KEmailText"
         android:layout_width="wrap_content"
@@ -34,12 +32,8 @@
         android:textSize="20sp"
         android:textColor="#494949"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="240dp"
+        android:layout_marginEnd="240dp"/>
 
-
-        >
-
-    </TextView>
     <EditText
         android:id="@+id/email"
         android:layout_width="300dp"
@@ -49,9 +43,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/KEmailText"
-        android:layout_marginTop="20dp">
-
-    </EditText>
+        android:layout_marginTop="20dp"/>
 
     <TextView
         android:id="@+id/NicknameText"
@@ -64,10 +56,7 @@
         android:textColor="#494949"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email"
-        >
-
-    </TextView>
+        app:layout_constraintTop_toBottomOf="@+id/email"/>
 
     <EditText
         android:id="@+id/username"
@@ -79,10 +68,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NicknameText"
-        android:layout_marginTop="20dp"
-        >
+        android:layout_marginTop="20dp"/>
 
-    </EditText>
     <TextView
         android:id="@+id/PasswordText"
         android:layout_width="wrap_content"
@@ -94,9 +81,7 @@
         android:layout_marginEnd="220dp"
         android:text="비밀번호"
         android:textSize="20sp"
-        android:textColor="#494949">
-
-    </TextView>
+        android:textColor="#494949"/>
 
     <EditText
         android:id="@+id/pw"
@@ -107,9 +92,7 @@
         app:layout_constraintTop_toBottomOf="@+id/PasswordText"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="20dp">
-
-    </EditText>
+        android:layout_marginTop="20dp"/>
 
     <EditText
         android:id="@+id/pwch"
@@ -119,12 +102,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:inputType="textPassword"
-        android:hint="비밀번호 확인"
-        >
-
-    </EditText>
-
-
+        android:hint="비밀번호 확인"/>
 
     <Button
         android:id="@+id/regBtn"
@@ -134,11 +112,10 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pwch"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="150dp"
+        android:layout_marginEnd="145dp"
         android:text="회원가입"
-        android:textSize="16sp"
-        android:backgroundTint="#A564FF">
-    </Button>
+        android:textSize="18sp"
+        android:backgroundTint="#A564FF"/>
     <Button
         android:id="@+id/ccBtn"
         android:layout_width="140dp"
@@ -147,15 +124,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pwch"
         android:layout_marginTop="30dp"
-        android:layout_marginStart="150dp"
+        android:layout_marginStart="145dp"
         android:backgroundTint="#959595"
         android:text="취소"
-        android:textSize="16sp"
-        >
-
-    </Button>
-
-
-
-
+        android:textSize="18sp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

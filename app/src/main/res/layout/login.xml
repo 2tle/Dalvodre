@@ -32,7 +32,6 @@
         android:layout_width="300dp"
         android:layout_height="45dp"
         android:layout_gravity="center"
-        android:gravity="left|top"
         android:hint="E-Mail"
         android:inputType="textEmailAddress"
         android:layout_marginTop="40dp"/>

@@ -8,8 +8,8 @@
     tools:context=".WriteActivity">
     <ImageButton
         android:id="@+id/ic_send"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_gravity="right"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
@@ -22,7 +22,7 @@
         android:layout_width="320dp"
         android:layout_height="320dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="여기에 유저가\n받은 한마디"
         android:textSize="45dp"
         android:textColor="@color/black"
@@ -36,12 +36,12 @@
     <EditText
         android:id="@+id/write_post"
         android:layout_width="320dp"
-        android:layout_height="320dp"
+        android:layout_height="wrap_content"
+        android:minHeight="120dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:inputType="none"
         android:gravity="top"
-        android:hint="오늘의 한마디를 공유해보세요"
-        />
+        android:hint="오늘의 한마디를 공유해보세요" />
 
 </LinearLayout>
