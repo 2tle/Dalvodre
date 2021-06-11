@@ -27,13 +27,12 @@
         android:layout_gravity="center"
         android:src="@mipmap/ic_launcher" />
 
-
     <EditText
         android:id="@+id/email"
         android:layout_width="300dp"
         android:layout_height="45dp"
         android:layout_gravity="center"
-        android:textColor="@color/black"
+        android:gravity="left|top"
         android:hint="E-Mail"
         android:inputType="textEmailAddress"
         android:layout_marginTop="40dp"/>
@@ -43,12 +42,10 @@
         android:layout_width="300dp"
         android:layout_height="45dp"
         android:layout_gravity="center"
-        android:textColor="@color/black"
         android:hint="Password"
         android:inputType="textPassword"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="25dp" />
-
+        android:layout_marginBottom="25dp"/>
     <Button
         android:id="@+id/loginBtn"
         android:layout_width="300dp"
