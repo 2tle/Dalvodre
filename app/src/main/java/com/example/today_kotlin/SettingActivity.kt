@@ -1,5 +1,6 @@
 package com.example.today_kotlin
 
+import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
@@ -11,18 +12,20 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.EmailAuthProvider
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.ktx.Firebase
 
 class SettingActivity : AppCompatActivity() {
+    @SuppressLint("CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
-        val user = Firebase.auth.currentUser
+
         var profileURL = ""
         val profileEmail = findViewById<TextView>(R.id.settext4)
-        profileEmail.text = user?.email.toString()
+
         val profileImageButton1 = findViewById<ImageButton>(R.id.profile1)
         val profileImageButton2 = findViewById<ImageButton>(R.id.profile2)
         val profileImageButton3 = findViewById<ImageButton>(R.id.profile3)
@@ -34,8 +37,21 @@ class SettingActivity : AppCompatActivity() {
         val regBtn = findViewById<Button>(R.id.regBtn)
         val ccBtn = findViewById<Button>(R.id.ccBtn)
         val nickName = findViewById<EditText>(R.id.set_username)
+        val logoutBtn: Button = findViewById(R.id.logoutBtn)
+        val auth = FirebaseAuth.getInstance()
+        var user = auth.currentUser
         nickName.setText(user?.displayName)
-
+        profileEmail.text = user?.email.toString()
+        logoutBtn.setOnClickListener {
+            Firebase.auth.signOut()
+            val builder = AlertDialog.Builder(this);
+            builder.setTitle("로그아웃 완료")
+            builder.setMessage("로그아웃 되었습니다. 이용해주셔서 감사합니다.")
+            builder.setPositiveButton("확인") { _:DialogInterface, _:Int ->
+                startActivity(Intent(this, LoginActivity::class.java))
+            }
+            builder.show()
+        }
         profileImageButton1.setOnClickListener {
             profileURL = "https://firebasestorage.googleapis.com/v0/b/today-kotlin.appspot.com/o/profile0.png?alt=media&token=1aee06c2-42d3-4700-b72c-8e2bc71227f1"
         }
@@ -103,6 +119,17 @@ class SettingActivity : AppCompatActivity() {
         }
 
         builder.show()
+    }
+
+    private fun goLoginActivity() {
+        Firebase.auth.signOut()
+        val builder = AlertDialog.Builder(this);
+        builder.setTitle("로그아웃 완료")
+        builder.setMessage("로그아웃 되었습니다. 이용해주셔서 감사합니다.")
+        builder.setPositiveButton("확인") { _:DialogInterface, _:Int ->
+
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
     }
 
 }
