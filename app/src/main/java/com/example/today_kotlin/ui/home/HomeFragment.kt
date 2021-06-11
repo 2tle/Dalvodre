@@ -2,6 +2,9 @@ package com.example.today_kotlin.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +22,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -42,14 +46,16 @@ class HomeFragment : Fragment() {
         val user = Firebase.auth.currentUser
         val db = Firebase.firestore
         val communityBtn = root.findViewById<Button>(R.id.communityBtn)
+        val handler = Handler(Looper.myLooper()!!)
         val dateTime: LocalDateTime = LocalDateTime.now()
         val formatter = DateTimeFormatter.ofPattern("HH")
         val formatted = dateTime.format(formatter)
         val background = root.findViewById<TextView>(R.id.text_home) //여기까지 선언
 
-        if(formatted.toInt() in 5..18)
+
+        if(formatted.toInt() in 5..16)
             background.setBackgroundResource(R.drawable.not)
-        else if(formatted.toInt() in 16..21)
+        if(formatted.toInt() in 16..21)
             background.setBackgroundResource(R.drawable.dinner) //시간에 따라 테마 변경
 
         communityBtn.setOnClickListener {

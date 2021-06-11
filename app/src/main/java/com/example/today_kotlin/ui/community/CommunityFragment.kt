@@ -47,4 +47,8 @@ class CommunityFragment : Fragment() {
 
         return root
     }
+
+    interface OnFragmentInteractionListener{
+        fun onFragmentInteraction(msg:String)
+    }
 }

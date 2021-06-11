@@ -55,6 +55,7 @@ class Main2Activity : AppCompatActivity() {
         val headerUsername: Button = headerView.findViewById(R.id.name_btn)
         val headerEmail: TextView = headerView.findViewById(R.id.textView)
 
+        
 
         headerUsername.setOnClickListener {
             startActivity(Intent(this, SettingActivity::class.java))

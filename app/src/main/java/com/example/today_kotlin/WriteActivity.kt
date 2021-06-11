@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import com.example.today_kotlin.ui.community.CommunityFragment
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -37,7 +38,7 @@ class WriteActivity : AppCompatActivity() {
         var backgroundType = 0
         val user = Firebase.auth.currentUser
 
-        if(formatted.toInt() in 5..18) {
+        if(formatted.toInt() in 5..16) {
             background.setBackgroundResource(R.drawable.not)
             backgroundType = 1 // not
         }else if(formatted.toInt() in 16..21) {
@@ -105,13 +106,13 @@ class WriteActivity : AppCompatActivity() {
 
     }
 
-    fun showAlertDialog(title: String, message: String, isPositiveBtnListener: Boolean ) {
+    private fun showAlertDialog(title: String, message: String, isPositiveBtnListener: Boolean ) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(title)
         builder.setMessage(message)
         if(isPositiveBtnListener) {
             builder.setPositiveButton("확인") { _: DialogInterface, _: Int ->
-                startActivity(Intent(this, Main2Activity::class.java))
+                startActivity(Intent(this, CommunityFragment::class.java))
             }
         }
         else builder.setPositiveButton("확인", null);

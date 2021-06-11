@@ -20,9 +20,9 @@ class MainActivity : AppCompatActivity() {
         val formatted = dateTime.format(formatter)
         val background = findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.background) //여기까지 선언
 
-        if(formatted.toInt() in 5..18)
+        if(formatted.toInt() in 5..16)
             background.setBackgroundResource(R.drawable.not)
-        else if(formatted.toInt() in 16..21)
+        if(formatted.toInt() in 16..21)
             background.setBackgroundResource(R.drawable.dinner) //시간에 따라 테마 변경
 
         handler.postDelayed({
