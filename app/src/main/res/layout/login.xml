@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".LoginActivity"
-    android:gravity="center"
-    android:layout_marginTop="50dp">
+    android:gravity="center">
     <TextView
         android:id="@+id/logintext"
         android:layout_width="wrap_content"
@@ -17,7 +17,8 @@
         android:fontFamily="@font/cafe24_font"
         android:textSize="62sp"
         android:gravity="center_horizontal"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"/>
 
     <ImageView
         android:id="@+id/loginimg"

@@ -30,7 +30,7 @@
         android:content="@+id/content"
         android:handle="@+id/handle"
         android:orientation="vertical"
-        android:topOffset="60dp">
+        android:topOffset="50dp">
 `
         <ImageView
             android:id="@+id/handle"
@@ -43,13 +43,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#FFFFFF"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="55dp"
                     android:text="오늘의 아이템"
                     android:textColor="#000000"
                     android:textSize="35sp" />
