@@ -114,6 +114,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="145dp"
         android:text="회원가입"
+        android:enabled="false"
         android:textSize="18sp"
         android:backgroundTint="#A564FF"/>
     <Button

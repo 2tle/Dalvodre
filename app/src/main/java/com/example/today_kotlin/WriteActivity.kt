@@ -10,6 +10,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.example.today_kotlin.ui.community.CommunityFragment
+import com.example.today_kotlin.ui.community.CommunityViewModel
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -28,9 +29,9 @@ class WriteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_write)
 
-        val dateAndtime: LocalDateTime = LocalDateTime.now()
+        val dateTime: LocalDateTime = LocalDateTime.now()
         val formatter = DateTimeFormatter.ofPattern("HH")
-        val formatted = dateAndtime.format(formatter)
+        val formatted = dateTime.format(formatter)
         val background: TextView = findViewById(R.id.write_word)
         val sendBtn = findViewById<ImageButton>(R.id.ic_send)
         val words: TextView = findViewById(R.id.write_word)
@@ -40,7 +41,7 @@ class WriteActivity : AppCompatActivity() {
 
         if(formatted.toInt() in 5..16) {
             background.setBackgroundResource(R.drawable.not)
-            backgroundType = 1 // not
+            backgroundType = 1
         }else if(formatted.toInt() in 16..21) {
             background.setBackgroundResource(R.drawable.dinner)
             backgroundType = 2
@@ -112,7 +113,7 @@ class WriteActivity : AppCompatActivity() {
         builder.setMessage(message)
         if(isPositiveBtnListener) {
             builder.setPositiveButton("확인") { _: DialogInterface, _: Int ->
-                startActivity(Intent(this, CommunityFragment::class.java))
+                startActivity(Intent(this, CommunityViewModel::class.java))
             }
         }
         else builder.setPositiveButton("확인", null);
