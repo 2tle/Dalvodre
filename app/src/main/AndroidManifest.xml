@@ -17,7 +17,9 @@
         <activity android:name=".WriteActivity" />
         <activity android:name=".SettingActivity" />
 
-
+        <activity
+            android:name=".LoginActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
@@ -30,7 +32,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
     </application>
 

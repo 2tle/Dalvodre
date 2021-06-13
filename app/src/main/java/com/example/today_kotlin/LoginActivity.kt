@@ -14,7 +14,6 @@ import com.google.firebase.ktx.Firebase
 class LoginActivity: AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
-        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
         auth = Firebase.auth
