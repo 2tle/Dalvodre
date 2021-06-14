@@ -31,9 +31,8 @@
         android:text="2021/05/31"
         android:textColor="#9C27B0"
         app:layout_constraintTop_toBottomOf="@id/text_ex"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginStart="290dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"/>
     <!--textView : 그동안의 한마디들이 들어감-->
 
