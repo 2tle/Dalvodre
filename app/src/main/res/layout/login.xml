@@ -53,7 +53,7 @@
         android:textSize="16sp"
         android:gravity="center"
         android:backgroundTint="#A564FF"
-        android:layout_gravity="center"/> <!--누가 색좀예쁜걸로 구해봐-->
+        android:layout_gravity="center"/>
 
     <Button
         android:id="@+id/register"
