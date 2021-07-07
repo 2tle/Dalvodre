@@ -78,13 +78,13 @@
                 <Button
                     android:id="@+id/communityBtn"
                     android:layout_width="250dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:text="오늘의 한마디\n공유하기"
                     android:fontFamily="@font/font2"
                     android:textSize="20sp"
                     android:textColor="#ffffff"
-                    android:backgroundTint="#9C5EFF"
+                    android:background="@drawable/btn"
                     android:layout_marginTop="40dp"/>
             </LinearLayout>
     </SlidingDrawer>

@@ -166,18 +166,20 @@
                 <Button
                     android:id="@+id/regBtn"
                     android:layout_width="140dp"
-                    android:layout_height="60dp"
+                    android:layout_height="56dp"
                     android:text="설정"
+                    android:textColor="@color/white"
                     android:fontFamily="@font/font2"
                     android:textSize="18dp"
                     android:layout_marginRight="5dp"
-                    android:backgroundTint="#A564FF"/>
+                    android:background="@drawable/btn"/>
                 <Button
                     android:id="@+id/ccBtn"
                     android:layout_width="140dp"
-                    android:layout_height="60dp"
+                    android:layout_height="55dp"
                     android:backgroundTint="#959595"
                     android:text="취소"
+                    android:background="@drawable/btn1"
                     android:fontFamily="@font/font2"
                     android:textSize="18sp"/>
             </LinearLayout>

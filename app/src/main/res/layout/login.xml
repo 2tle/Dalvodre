@@ -53,7 +53,7 @@
         <EditText
             android:id="@+id/email"
             android:layout_width="300dp"
-            android:layout_height="45dp"
+            android:layout_height="50dp"
             android:hint="E-Mail"
             android:inputType="textEmailAddress"
             android:layout_marginTop="40dp"
@@ -63,7 +63,7 @@
         <EditText
             android:id="@+id/pw"
             android:layout_width="300dp"
-            android:layout_height="45dp"
+            android:layout_height="50dp"
             android:hint="Password"
             android:inputType="textPassword"
             android:layout_marginTop="5dp"
@@ -76,10 +76,11 @@
             android:layout_height="60dp"
             android:layout_marginBottom="10dp"
             android:text="로그인"
+            android:textColor="@color/white"
+            android:background="@drawable/btn"
             android:fontFamily="@font/font2"
             android:textSize="20sp"
             android:gravity="center"
-            android:backgroundTint="#A564FF"
             android:layout_gravity="center"/>
 
         <Button
