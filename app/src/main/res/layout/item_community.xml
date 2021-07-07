@@ -34,6 +34,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="15dp"
             android:text="username"
+            android:fontFamily="@font/font2"
             android:textSize="17sp"
             android:textColor="@color/black"/>
     </LinearLayout>
@@ -81,6 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="좋아요 갯수"
+            android:fontFamily="@font/font2"
             android:textSize="15sp"
             android:textColor="@color/black"/>
 
@@ -91,6 +93,7 @@
             android:layout_marginStart="207dp"
             android:layout_gravity="center"
             android:text="날짜"
+            android:fontFamily="@font/font2"
             android:textColor="@color/black"/>
     </LinearLayout>
 
@@ -103,6 +106,7 @@
         android:layout_marginBottom="5dp"
         android:layout_gravity="center"
         android:text="유저가 쓴 글"
+        android:fontFamily="@font/font2"
         android:textSize="17sp"
         android:textColor="@color/black"/>
 
