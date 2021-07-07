@@ -6,104 +6,154 @@
     android:layout_height="match_parent"
     tools:context=".RegisterActivity"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center_horizontal|bottom"
+    android:background="@drawable/main">
     <TextView
-        android:id="@+id/SignUpText"
+        android:id="@+id/logintext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="회원가입"
-        android:textSize="35sp"
-        android:textColor="#D5000000"
-        android:layout_marginRight="90dp"
+        android:text="달보드레"
+        android:fontFamily="@font/cafe24_font"
+        android:textColor="@color/white"
+        android:shadowColor="#23293A"
+        android:shadowDy="8.0"
+        android:shadowDx="8.0"
+        android:shadowRadius="3"
+        android:textSize="62sp"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center"
         android:layout_marginBottom="20dp"/>
 
-    <TextView
-        android:id="@+id/KEmailText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="이메일"
-        android:textSize="20sp"
-        android:textColor="#494949"
-        android:layout_marginTop="40dp"
-        android:layout_marginRight="128dp"/>
-
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="300dp"
-        android:layout_height="55dp"
-        android:inputType="textEmailAddress"
-        android:hint="E-Mail"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"/>
-
-    <TextView
-        android:id="@+id/NicknameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="닉네임"
-        android:textSize="20sp"
-        android:textColor="#494949"
-        android:layout_marginRight="128dp"/>
-
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="300dp"
-        android:layout_height="55dp"
-        android:inputType="text"
-        android:hint="최대 8자 입력"
-        android:maxLength="8"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"/>
-
-    <TextView
-        android:id="@+id/PasswordText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="비밀번호"
-        android:textSize="20sp"
-        android:textColor="#494949"
-        android:layout_marginRight="118dp"/>
-
-    <EditText
-        android:id="@+id/pw"
-        android:layout_width="300dp"
-        android:layout_height="55dp"
-        android:inputType="textPassword"
-        android:hint="최소 8자 입력"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"/>
-
-    <EditText
-        android:id="@+id/pwch"
-        android:layout_width="300dp"
-        android:layout_height="55dp"
-        android:layout_gravity="center"
-        android:inputType="textPassword"
-        android:hint="비밀번호 확인"/>
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:layout_marginTop="40dp">
-        <Button
-            android:id="@+id/regBtn"
-            android:layout_width="140dp"
-            android:layout_height="60dp"
-            android:text="회원가입"
-            android:enabled="false"
-            android:textSize="18sp"
-            android:layout_marginRight="2dp"
-            android:backgroundTint="#A564FF"/>
-        <Button
-            android:id="@+id/ccBtn"
-            android:layout_width="140dp"
-            android:layout_height="60dp"
-             android:backgroundTint="#959595"
-            android:layout_marginLeft="2dp"
-            android:text="취소"
-            android:textSize="18sp"/>
+        android:layout_width="380dp"
+        android:layout_height="620dp"
+        android:orientation="vertical"
+        android:background="@drawable/login"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="30dp">
+        <TextView
+            android:id="@+id/SignUpText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="SIGN UP"
+            android:fontFamily="@font/font2"
+            android:textColor="@color/white"
+            android:shadowColor="#23293A"
+            android:shadowDy="8.0"
+            android:shadowDx="8.0"
+            android:shadowRadius="3"
+            android:textSize="35sp"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:id="@+id/KEmailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이메일"
+            android:fontFamily="@font/font2"
+            android:textColor="@color/white"
+            android:shadowColor="#23293A"
+            android:shadowDy="4.0"
+            android:shadowDx="4.0"
+            android:shadowRadius="3"
+            android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="300dp"
+            android:layout_height="55dp"
+            android:inputType="textEmailAddress"
+            android:hint="E-Mail"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:paddingStart="5dp"
+            android:background="@drawable/edit"/>
+
+        <TextView
+            android:id="@+id/NicknameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="닉네임"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:shadowColor="#23293A"
+            android:shadowDy="4.0"
+            android:shadowDx="4.0"
+            android:shadowRadius="3"/>
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="300dp"
+            android:layout_height="55dp"
+            android:inputType="text"
+            android:hint="최대 8자 입력"
+            android:maxLength="8"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:paddingStart="5dp"
+            android:background="@drawable/edit"/>
+
+        <TextView
+            android:id="@+id/PasswordText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="비밀번호"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:shadowColor="#23293A"
+            android:shadowDy="4.0"
+            android:shadowDx="4.0"
+            android:shadowRadius="3"/>
+
+        <EditText
+            android:id="@+id/pw"
+            android:layout_width="300dp"
+            android:layout_height="55dp"
+            android:inputType="textPassword"
+            android:hint="최소 8자 입력"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:paddingStart="5dp"
+            android:background="@drawable/edit"/>
+
+        <EditText
+            android:id="@+id/pwch"
+            android:layout_width="300dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:hint="비밀번호 확인"
+            android:inputType="textPassword"
+            android:paddingStart="5dp"
+            android:background="@drawable/edit"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp">
+            <Button
+                android:id="@+id/regBtn"
+                android:layout_width="140dp"
+                android:layout_height="60dp"
+                android:text="회원가입"
+                android:fontFamily="@font/font2"
+                android:enabled="false"
+                android:textSize="18sp"
+                android:layout_marginRight="2dp"
+                android:backgroundTint="#A564FF"/>
+            <Button
+                android:id="@+id/ccBtn"
+                android:layout_width="140dp"
+                android:layout_height="60dp"
+                android:fontFamily="@font/font2"
+                android:backgroundTint="#959595"
+                android:layout_marginLeft="2dp"
+                android:text="취소"
+                android:textSize="18sp"/>
+    </LinearLayout>
     </LinearLayout>
 </LinearLayout>
