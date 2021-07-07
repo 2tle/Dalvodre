@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:text="2021/05/31"
+        android:fontFamily="@font/font2"
         android:textColor="#9C27B0"
         app:layout_constraintTop_toBottomOf="@id/text_ex"
         app:layout_constraintRight_toRightOf="parent"

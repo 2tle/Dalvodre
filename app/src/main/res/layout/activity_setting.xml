@@ -23,6 +23,7 @@
                 android:layout_marginTop="60dp"
                 android:layout_marginLeft="40dp"
                 android:text="내 정보 설정"
+                android:fontFamily="@font/font2"
                 android:textSize="35sp"
                 android:textColor="#D5000000"/>
             <TextView
@@ -31,6 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:text="프로필 사진"
+                android:fontFamily="@font/font2"
                 android:textSize="20sp"
                 android:textColor="#494949"
                 android:layout_marginTop="30dp"/>
@@ -98,6 +100,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="30dp"
                 android:text="닉네임"
+                android:fontFamily="@font/font2"
                 android:textSize="20sp"
                 android:textColor="#494949"/>
             <EditText
@@ -116,6 +119,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:text="이메일"
+                android:fontFamily="@font/font2"
                 android:textSize="20sp"
                 android:textColor="#494949"
                 android:layout_marginTop="30dp"/>
@@ -125,8 +129,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/nav_header_subtitle"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/font2"
                 android:layout_gravity="center"
-                android:textSize="20sp"/>
+                android:textSize="19sp"/>
             <TextView
                 android:id="@+id/settext5"
                 android:layout_width="wrap_content"
@@ -134,6 +139,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="30dp"
                 android:text="비밀번호"
+                android:fontFamily="@font/font2"
                 android:textSize="20sp"
                 android:textColor="#494949"/>
             <EditText
@@ -162,6 +168,7 @@
                     android:layout_width="140dp"
                     android:layout_height="60dp"
                     android:text="설정"
+                    android:fontFamily="@font/font2"
                     android:textSize="18dp"
                     android:layout_marginRight="5dp"
                     android:backgroundTint="#A564FF"/>
@@ -171,6 +178,7 @@
                     android:layout_height="60dp"
                     android:backgroundTint="#959595"
                     android:text="취소"
+                    android:fontFamily="@font/font2"
                     android:textSize="18sp"/>
             </LinearLayout>
             <Button
@@ -179,6 +187,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="로그아웃"
+                android:fontFamily="@font/font2"
                 android:textColor="#CF0000"
                 android:textSize="15dp"
                 android:background="#00ff0000"

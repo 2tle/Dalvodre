@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".RegisterActivity"
     android:orientation="vertical"
-    android:gravity="center_horizontal|bottom"
+    android:gravity="center|bottom"
     android:background="@drawable/main">
     <TextView
         android:id="@+id/logintext"
@@ -25,8 +25,9 @@
         android:layout_marginBottom="20dp"/>
 
     <LinearLayout
-        android:layout_width="380dp"
+        android:layout_width="match_parent"
         android:layout_height="620dp"
+        android:layout_marginHorizontal="8dp"
         android:orientation="vertical"
         android:background="@drawable/login"
         android:gravity="center_horizontal"

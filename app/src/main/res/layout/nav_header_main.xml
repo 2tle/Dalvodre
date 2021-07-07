@@ -36,6 +36,7 @@
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:background="#00ff0000"
         android:text="example"
+        android:fontFamily="@font/font2"
         android:textSize="17sp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"/><!--닉네임-->
 
