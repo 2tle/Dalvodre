@@ -90,7 +90,7 @@
             android:id="@+id/community_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="207dp"
+            android:layout_marginStart="190dp"
             android:layout_gravity="center"
             android:text="날짜"
             android:fontFamily="@font/font2"

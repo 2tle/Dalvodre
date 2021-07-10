@@ -51,7 +51,7 @@ class Main2Activity : AppCompatActivity() {
         navView.setupWithNavController(navController)
         val navigationView: NavigationView = findViewById(R.id.nav_view)
         val headerView: View = navigationView.getHeaderView(0)
-        val headerIcon: ImageView = headerView.findViewById(R.id.imageView)
+        val headerIcon: ImageButton = headerView.findViewById(R.id.imageButton)
         val headerUsername: Button = headerView.findViewById(R.id.name_btn)
         val headerEmail: TextView = headerView.findViewById(R.id.textView)
 
@@ -60,6 +60,13 @@ class Main2Activity : AppCompatActivity() {
         headerUsername.setOnClickListener {
             startActivity(Intent(this, SettingActivity::class.java))
         }
+        headerIcon.setOnClickListener{
+            startActivity(Intent(this, SettingActivity::class.java))
+        }
+        headerEmail.setOnClickListener{
+            startActivity(Intent(this, SettingActivity::class.java))
+        }
+
 
         storage= FirebaseStorage.getInstance()
         val httpsReference = storage.getReferenceFromUrl(user?.photoUrl.toString())
