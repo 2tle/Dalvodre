@@ -69,6 +69,15 @@
         android:orientation="horizontal">
 
         <ImageButton
+            android:id="@+id/community_comment"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@drawable/coding_cmmentimage"
+            android:backgroundTint="@color/white"
+            android:background="@null"/>
+
+
+        <ImageButton
             android:id="@+id/community_imagebutton"
             android:layout_width="55dp"
             android:layout_height="55dp"
@@ -90,7 +99,7 @@
             android:id="@+id/community_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="190dp"
+            android:layout_marginStart="150dp"
             android:layout_gravity="center"
             android:text="날짜"
             android:fontFamily="@font/font2"

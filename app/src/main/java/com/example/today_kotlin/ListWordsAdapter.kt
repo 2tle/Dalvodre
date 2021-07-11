@@ -28,4 +28,7 @@ class ListWordsAdapter(private val context: Context) : RecyclerView.Adapter<List
             date.text = item.date
         }
     }
+
+
+
 }

@@ -12,5 +12,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_community"/>
+        tools:listitem="@layout/item_community" />
 </LinearLayout>
