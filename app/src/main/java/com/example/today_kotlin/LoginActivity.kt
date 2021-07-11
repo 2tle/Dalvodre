@@ -3,6 +3,7 @@ package com.example.today_kotlin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
@@ -47,7 +48,7 @@ class LoginActivity: AppCompatActivity() {
         super.onStart()
         auth = Firebase.auth;
         var currentUser = auth.currentUser
-
+        currentUser = null
         if(currentUser != null) {
             startActivity(Intent(this, SubActivity::class.java))
         }
@@ -59,10 +60,8 @@ class LoginActivity: AppCompatActivity() {
                 if (task.isSuccessful) {
                     startActivity(Intent(this, SubActivity::class.java))
                 } else {
-                    showAlertDialog("로그인 오류","서버상의 문제가 발생했습니다. 나중에 다시 시도해주세요.")
+                    showAlertDialog("로그인 오류",task.exception?.message.toString())
                 }
-            }.addOnFailureListener {
-                showAlertDialog("로그인 오류","서버상의 문제가 발생했습니다. 나중에 다시 시도해주세요.")
             }
     }
 

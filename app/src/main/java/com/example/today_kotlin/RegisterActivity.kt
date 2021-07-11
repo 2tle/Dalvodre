@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
@@ -190,12 +191,12 @@ class RegisterActivity : AppCompatActivity() {
                             }
 
                         } else {
-                            showAlertDialog("회원가입 오류","회원가입에 실패하였습니다. 나중에 다시 시도하여주세요.", false)
+                            showAlertDialog("회원가입 오류",task.exception?.message.toString(), false)
                         }
                     }
 
                 } else {
-                    showAlertDialog("회원가입 오류","회원가입에 실패하였습니다. 나중에 다시 시도하여주세요.", false)
+                    showAlertDialog("회원가입 오류",task.exception?.message.toString(), false)
                 }
             }
     }

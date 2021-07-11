@@ -84,11 +84,11 @@ class SettingActivity : AppCompatActivity() {
                                 if(task1.isSuccessful) {
                                     showAlertDialog("정보 변경 완료","정보가 변경되었습니다.",true)
                                 } else {
-                                    showAlertDialog("정보 변경 오류","서버 문제로 실패하였습니다.",false)
+                                    showAlertDialog("정보 변경 오류",task1.exception?.message.toString(),false)
                                 }
                             }
                         } else {
-                            showAlertDialog("정보 변경 오류","서버 문제로 실패하였습니다.",false)
+                            showAlertDialog("정보 변경 오류",task.exception?.message.toString(),false)
                         }
                     }
                 }.addOnFailureListener {
