@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.today_kotlin">
+    package="com.example.today_kotlin" >
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="달보드레"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:hardwareAccelerated="false"
-        android:theme="@style/Theme.Today_kotlin">
+        android:theme="@style/Theme.Today_kotlin" >
+        <activity android:name=".EditActivity" >
+        </activity>
         <activity android:name=".NavHeaderActivity" />
         <activity android:name=".WriteActivity" />
         <activity android:name=".SettingActivity" />
-
         <activity
             android:name=".LoginActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".RegisterActivity"
-            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".RegisterActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
             android:theme="@style/Theme.Today_kotlin.NoActionBar" />
         <activity android:name=".SubActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
