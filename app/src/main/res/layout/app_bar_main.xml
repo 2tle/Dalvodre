@@ -7,7 +7,7 @@
     tools:context=".Main2Activity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:theme="@style/Theme.Today_kotlin.AppBarOverlay">
 
@@ -15,14 +15,13 @@
             android:id="@+id/toolbar"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="?attr/colorPrimary"
+            android:background="#00ff0000"
             app:popupTheme="@style/Theme.Today_kotlin.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <include
-        layout="@layout/content_main"
         android:id="@+id/includeContentMain"
-        />
+        layout="@layout/content_main" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

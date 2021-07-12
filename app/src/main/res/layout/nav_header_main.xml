@@ -24,12 +24,12 @@
         android:src="@drawable/profile1"
         android:layout_gravity="center"/>
 
-    <Button
-        android:id="@+id/name_btn"
+    <TextView
+        android:id="@+id/name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:layout_marginVertical="10dp"
         android:background="#00ff0000"
         android:text="example"
         android:fontFamily="@font/font2"

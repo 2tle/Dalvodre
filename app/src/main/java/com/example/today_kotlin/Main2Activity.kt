@@ -15,6 +15,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
@@ -38,6 +39,7 @@ class Main2Activity : AppCompatActivity() {
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
+        val drawer: Button = findViewById(R.id.btn_dr)
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home, R.id.nav_save, R.id.nav_community
@@ -45,14 +47,16 @@ class Main2Activity : AppCompatActivity() {
         )
         val user = Firebase.auth.currentUser
 
-
+        drawer.setOnClickListener {
+            drawerLayout.openDrawer(GravityCompat.START);
+        }
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         val navigationView: NavigationView = findViewById(R.id.nav_view)
         val headerView: View = navigationView.getHeaderView(0)
         val headerIcon: ImageButton = headerView.findViewById(R.id.imageButton)
-        val headerUsername: Button = headerView.findViewById(R.id.name_btn)
+        val headerUsername: TextView = headerView.findViewById(R.id.name_tv)
         val headerEmail: TextView = headerView.findViewById(R.id.textView)
 
         
