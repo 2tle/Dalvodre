@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import com.example.today_kotlin.ui.community.CommunityViewModel
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.SetOptions
@@ -22,7 +23,7 @@ class EditActivity : AppCompatActivity() {
         setContentView(R.layout.activity_edit)
         val backBtn : ImageButton = findViewById(R.id.ic_back)
         backBtn.setOnClickListener {
-            //startActivity()
+            startActivity(Intent(this,CommunityViewModel::class.java))
         }
 
         val tWord : TextView = findViewById(R.id.write_word)
@@ -72,7 +73,7 @@ class EditActivity : AppCompatActivity() {
         builder.setTitle(title)
         builder.setMessage(message)
         builder.setPositiveButton("확인"){_: DialogInterface, _:Int ->
-            startActivity(Intent(baseContext,Main2Activity::class.java))
+            startActivity(Intent(baseContext,CommunityViewModel::class.java))
         }
         builder.show()
     }

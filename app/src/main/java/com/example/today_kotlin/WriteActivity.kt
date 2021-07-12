@@ -30,11 +30,6 @@ class WriteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_write)
 
-        val backBtn : ImageButton = findViewById(R.id.ic_back)
-        backBtn.setOnClickListener {
-            startActivity(Intent(this, Main2Activity::class.java))
-        }
-
         val dateTime: LocalDateTime = LocalDateTime.now()
         val formatter = DateTimeFormatter.ofPattern("HH")
         val formatted = dateTime.format(formatter)
