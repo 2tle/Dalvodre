@@ -3,6 +3,7 @@ package com.example.today_kotlin
 import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
@@ -28,6 +29,11 @@ class WriteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_write)
+
+        val backBtn : ImageButton = findViewById(R.id.ic_back)
+        backBtn.setOnClickListener {
+            startActivity(Intent(this, Main2Activity::class.java))
+        }
 
         val dateTime: LocalDateTime = LocalDateTime.now()
         val formatter = DateTimeFormatter.ofPattern("HH")

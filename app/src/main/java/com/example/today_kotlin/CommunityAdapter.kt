@@ -1,12 +1,15 @@
 package com.example.today_kotlin
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -44,7 +47,17 @@ class CommunityAdapter(private val context: Context): RecyclerView.Adapter<Commu
         private val date: TextView = itemView.findViewById(R.id.community_date)
         private val text: TextView = itemView.findViewById(R.id.community_usertext)
         private val documentId: TextView = itemView.findViewById(R.id.documentID)
+        private val icEdit : ImageButton = itemView.findViewById(R.id.ic_edit)
+        val intent = Intent(context, EditActivity::class.java)
+        //intent.putExtra("docId",item.docuUid)
         fun bind(item: CommunityData) {
+            intent.putExtra("documentID",item.docuUid)
+            intent.putExtra("words",item.words)
+            intent.putExtra("text",item.text)
+            intent.putExtra("background",item.backgroundType)
+            icEdit.setOnClickListener {
+                startActivity(context,intent,null)
+            }
             val storage: FirebaseStorage = FirebaseStorage.getInstance()
             val httpsReference = storage.getReferenceFromUrl(item.profileId)
             Glide.with(itemView).load(httpsReference).apply(
@@ -57,6 +70,10 @@ class CommunityAdapter(private val context: Context): RecyclerView.Adapter<Commu
             date.text = item.date
             text.text = item.text
             documentId.text = 0.toString()
+            if(item.userUid != user?.uid) {
+                icEdit.visibility = View.INVISIBLE;
+            }
+
             when (item.backgroundType) {
                 1 -> {
                     words.setBackgroundResource(drawable.not)
