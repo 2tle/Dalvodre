@@ -42,6 +42,7 @@
         android:layout_height="320dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
+        android:paddingHorizontal="30dp"
         android:text="여기에 유저가\n받은 한마디"
         android:textSize="45dp"
         android:textColor="@color/black"

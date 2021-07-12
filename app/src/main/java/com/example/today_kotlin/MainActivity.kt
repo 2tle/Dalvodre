@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         val dateTime: LocalDateTime = LocalDateTime.now()
         val formatter = DateTimeFormatter.ofPattern("HH")
         val formatted = dateTime.format(formatter)
-        val background = findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.background) //여기까지 선언
+        val background : androidx.constraintlayout.widget.ConstraintLayout = findViewById(R.id.background) //여기까지 선언
 
         if(formatted.toInt() in 5..16)
             background.setBackgroundResource(R.drawable.not)

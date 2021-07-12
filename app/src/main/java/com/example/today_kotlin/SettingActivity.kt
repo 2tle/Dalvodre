@@ -4,18 +4,21 @@ import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.ktx.Firebase
+
 
 class SettingActivity : AppCompatActivity() {
     @SuppressLint("CutPasteId")
@@ -99,9 +102,6 @@ class SettingActivity : AppCompatActivity() {
                 showAlertDialog("정보 변경 오류","입력을 확인해주세요.",false)
             }
         }
-
-
-
 
 
     }

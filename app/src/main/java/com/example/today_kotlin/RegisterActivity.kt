@@ -10,6 +10,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -40,7 +41,16 @@ class RegisterActivity : AppCompatActivity() {
         var check1 = false
         var check2 = false
         var check3 = false
-        var check4 = false //여기까지 선언
+        var check4 = false
+        val dateTime: LocalDateTime = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("HH")
+        val formatted = dateTime.format(formatter)
+        val background : LinearLayout = findViewById(R.id.registerBack) //여기까지 선언
+
+        if(formatted.toInt() in 5..16)
+            background.setBackgroundResource(R.drawable.not)
+        if(formatted.toInt() in 16..21)
+            background.setBackgroundResource(R.drawable.dinner) //시간에 따라 테마 변경
 
 
         ccBtn.setOnClickListener {
