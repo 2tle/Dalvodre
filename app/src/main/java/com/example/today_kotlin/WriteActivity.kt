@@ -33,9 +33,10 @@ class WriteActivity : AppCompatActivity() {
         val formatter = DateTimeFormatter.ofPattern("HH")
         val formatted = dateTime.format(formatter)
         val background: TextView = findViewById(R.id.write_word)
-        val sendBtn = findViewById<ImageButton>(R.id.ic_send)
+        val sendBtn : ImageButton = findViewById(R.id.ic_send)
         val words: TextView = findViewById(R.id.write_word)
-        val text = findViewById<EditText>(R.id.write_post)
+        val text : EditText = findViewById(R.id.write_post)
+        val backBtn : ImageButton = findViewById(R.id.ic_back)
         var backgroundType = 0
         val user = Firebase.auth.currentUser
 
@@ -51,8 +52,9 @@ class WriteActivity : AppCompatActivity() {
             sendPost(user.uid,user.photoUrl.toString(),user.displayName, words.text.toString(), text.text.toString(), backgroundType );
         }
 
-
-
+        backBtn.setOnClickListener({
+            startActivity(Intent(this, Main2Activity::class.java))
+        })
 
         val db = Firebase.firestore
         val docRef = db.collection("users").document(user.uid)
