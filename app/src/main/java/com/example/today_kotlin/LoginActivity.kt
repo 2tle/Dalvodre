@@ -3,14 +3,18 @@ package com.example.today_kotlin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.service.autofill.Validators.not
 import android.util.Log
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class LoginActivity: AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -21,7 +25,17 @@ class LoginActivity: AppCompatActivity() {
         val loginBtn = findViewById<Button>(R.id.loginBtn)
         val regBtn = findViewById<Button>(R.id.register)
         val email = findViewById<EditText>(R.id.email)
-        val pw = findViewById<EditText>(R.id.pw) //여기까지 선언
+        val pw = findViewById<EditText>(R.id.pw)
+        val dateTime: LocalDateTime = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("HH")
+        val formatted = dateTime.format(formatter)
+        val background : LinearLayout = findViewById(R.id.loginBack) //여기까지 선언
+
+        if(formatted.toInt() in 5..16)
+            background.setBackgroundResource(R.drawable.not)
+        if(formatted.toInt() in 16..21)
+            background.setBackgroundResource(R.drawable.dinner) //시간에 따라 테마 변경
+
 
         loginBtn.setOnClickListener {
             if(email.text.toString() == "" || pw.text.toString() == "") {

@@ -7,7 +7,8 @@
     tools:context=".RegisterActivity"
     android:orientation="vertical"
     android:gravity="center|bottom"
-    android:background="@drawable/main">
+    android:background="@drawable/main"
+    android:id="@+id/registerBack">
     <TextView
         android:id="@+id/logintext"
         android:layout_width="wrap_content"
