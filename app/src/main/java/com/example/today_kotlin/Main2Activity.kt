@@ -42,15 +42,6 @@ class Main2Activity : AppCompatActivity() {
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
         val drawer: Button = findViewById(R.id.btn_dr)
-        val dateTime: LocalDateTime = LocalDateTime.now()
-        val formatter = DateTimeFormatter.ofPattern("HH")
-        val formatted = dateTime.format(formatter)
-        val background : LinearLayout = findViewById(R.id.navVar) //여기까지 선언
-
-        if(formatted.toInt() in 5..16)
-            background.setBackgroundResource(R.drawable.side_nav_bar_not)
-        if(formatted.toInt() in 16..21)
-            background.setBackgroundResource(R.drawable.side_nav_bar_dinner) //시간에 따라 테마 변경
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
@@ -71,9 +62,24 @@ class Main2Activity : AppCompatActivity() {
         val headerUsername: TextView = headerView.findViewById(R.id.name_tv)
         val headerEmail: TextView = headerView.findViewById(R.id.textView)
 
-        
+        val dateTime: LocalDateTime = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("HH")
+        val formatted = dateTime.format(formatter)
+        val background : LinearLayout = headerView.findViewById(R.id.navBar)
+        val handler : Button = findViewById(R.id.btn_dr)//여기까지 선언
 
-        headerUsername.setOnClickListener {
+        if(formatted.toInt() in 5..16) {
+            background.setBackgroundResource(R.drawable.side_nav_bar_not)
+            handler.setBackgroundResource(R.drawable.nav_handler_not)
+        }
+        else if(formatted.toInt() in 16..21) {
+            background.setBackgroundResource(R.drawable.side_nav_bar_dinner)
+            handler.setBackgroundResource(R.drawable.nav_handler_dinner)
+
+        }
+
+
+                headerUsername.setOnClickListener {
             startActivity(Intent(this, SettingActivity::class.java))
         }
         headerIcon.setOnClickListener{

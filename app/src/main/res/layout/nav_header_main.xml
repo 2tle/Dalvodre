@@ -13,7 +13,7 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     tools:context=".NavHeaderActivity"
-    android:id="@+id/navVar">
+    android:id="@+id/navBar">
 
     <ImageButton
         android:id="@+id/imageButton"
