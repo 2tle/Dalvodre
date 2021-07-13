@@ -25,6 +25,8 @@ import com.google.firebase.ktx.Firebase
 @Suppress("RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class SettingActivity : AppCompatActivity() {
     @SuppressLint("CutPasteId")
+    val fsDb = Firebase.firestore
+    lateinit var userPw: String;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
@@ -51,7 +53,7 @@ class SettingActivity : AppCompatActivity() {
         profileEmail.text = user?.email.toString()
         logoutBtn.setOnClickListener {
             Firebase.auth.signOut()
-            val builder = AlertDialog.Builder(this);
+            val builder = AlertDialog.Builder(this)
             builder.setTitle("로그아웃 완료")
             builder.setMessage("로그아웃 되었습니다. 이용해주셔서 감사합니다.")
             builder.setPositiveButton("확인") { _: DialogInterface, _: Int ->
@@ -61,6 +63,33 @@ class SettingActivity : AppCompatActivity() {
         }
 
         deleteBtn.setOnClickListener {
+            if(profilePw.text.toString() == "") {
+                showAlertDialog("회원탈퇴 오류","현재 비밀번호를 입력해주세요.",false)
+            } else {
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("회원탈퇴")
+                builder.setMessage("탈퇴하시겠습니까? 기존 저장된 정보와 글이 모두 삭제됩니다.")
+                builder.setNegativeButton("취소",null)
+                builder.setPositiveButton("확인") { _:DialogInterface, _:Int ->
+                    val credential = EmailAuthProvider.getCredential(user.email, profilePw.text.toString())
+                    user.reauthenticate(credential).addOnCompleteListener{
+                        userPw = profilePw.text.toString()
+                        delFirestoreUsers(Firebase.auth.currentUser?.uid)
+                    }.addOnFailureListener {
+                        val builder2 = AlertDialog.Builder(this)
+                        builder2.setTitle("회원탈퇴 오류")
+                        builder2.setMessage("현재 비밀번호 오류")
+                        builder2.setPositiveButton("확인",null)
+                        builder2.show()
+                    }
+
+                    /*delFirestorePosts(Firebase.auth.currentUser?.uid)
+                    delAuth() */
+
+
+                }
+                builder.show()
+            } /*
             val builder = AlertDialog.Builder(this)
             builder.setTitle("회원탈퇴")
             builder.setMessage("탈퇴하시겠습니까? 기존 저장된 정보와 글이 모두 삭제됩니다.")
@@ -105,7 +134,7 @@ class SettingActivity : AppCompatActivity() {
                     }*/
 
             }
-            builder.show()
+            builder.show() */
         }
 
         profileImageButton1.setOnClickListener {
@@ -189,4 +218,53 @@ class SettingActivity : AppCompatActivity() {
 
         builder.show()
     }
+
+    fun delFirestoreUsers(uid : String?) {
+        fsDb.collection("users").document(uid.toString()).delete().addOnCompleteListener { task ->
+            if(task.isSuccessful) {
+                delFirestorePosts(uid)
+            }
+        }
+    }
+    fun delFirestorePosts(uid: String?) {
+        fsDb.collection("posts").whereEqualTo("uid",uid).get().addOnSuccessListener { docs ->
+            var cnt : Int = 0
+            for(doc in docs) {
+                fsDb.collection("posts").document(doc.data["uid"].toString()).delete().addOnSuccessListener {
+                    cnt += 1
+                    if(cnt == docs.size()) {
+                        delAuth()
+                    }
+                }.addOnFailureListener {
+                }
+            }
+
+        }
+    }
+
+    fun delAuth() {
+        val user = Firebase.auth.currentUser
+        val credential = EmailAuthProvider.getCredential(user.email, userPw)
+        user.reauthenticate(credential).addOnCompleteListener {
+            user.delete().addOnCompleteListener  { task ->
+                val builder1 = AlertDialog.Builder(this)
+                if(task.isSuccessful) {
+
+                    builder1.setTitle("회원탈퇴 완료")
+                    builder1.setMessage("회원탈퇴 되었습니다. 이용해주셔서 감사합니다.")
+                    builder1.setPositiveButton("확인") { _: DialogInterface, _: Int ->
+                        startActivity(Intent(baseContext, LoginActivity::class.java))
+                    }
+                } else {
+                    builder1.setTitle("회원탈퇴 실패")
+                    builder1.setMessage("회원탈퇴에 실패하였습니다. 관리자에게 문의하세요.")
+                    builder1.setPositiveButton("확인",null)
+                }
+                builder1.show()
+
+            }
+        }
+
+    }
+
 }

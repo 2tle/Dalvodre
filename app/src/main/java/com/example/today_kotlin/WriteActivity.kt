@@ -53,9 +53,9 @@ class WriteActivity : AppCompatActivity() {
             sendPost(user.uid,user.photoUrl.toString(),user.displayName, words.text.toString(), text.text.toString(), backgroundType );
         }
 
-        backBtn.setOnClickListener({
+        backBtn.setOnClickListener{
             startActivity(Intent(this, Main2Activity::class.java))
-        })
+        }
 
         val db = Firebase.firestore
         val docRef = db.collection("users").document(user.uid)
@@ -116,7 +116,7 @@ class WriteActivity : AppCompatActivity() {
         builder.setMessage(message)
         if(isPositiveBtnListener) {
             builder.setPositiveButton("확인") { _: DialogInterface, _: Int ->
-                startActivity(Intent(baseContext, CommunityViewModel::class.java))
+                startActivity(Intent(baseContext, Main2Activity::class.java))
             }
         }
         else builder.setPositiveButton("확인", null);

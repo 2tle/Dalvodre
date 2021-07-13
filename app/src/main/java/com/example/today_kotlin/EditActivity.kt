@@ -23,7 +23,7 @@ class EditActivity : AppCompatActivity() {
         setContentView(R.layout.activity_edit)
         val backBtn : ImageButton = findViewById(R.id.ic_back)
         backBtn.setOnClickListener {
-            startActivity(Intent(this,CommunityViewModel::class.java))
+            startActivity(Intent(this,Main2Activity::class.java))
         }
 
         val tWord : TextView = findViewById(R.id.write_word)
@@ -73,7 +73,7 @@ class EditActivity : AppCompatActivity() {
         builder.setTitle(title)
         builder.setMessage(message)
         builder.setPositiveButton("확인"){_: DialogInterface, _:Int ->
-            startActivity(Intent(baseContext,CommunityViewModel::class.java))
+            startActivity(Intent(baseContext,Main2Activity::class.java))
         }
         builder.show()
     }
