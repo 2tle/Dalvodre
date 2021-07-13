@@ -2,6 +2,7 @@ package com.example.today_kotlin
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -70,7 +71,8 @@ class CommunityAdapter(private val context: Context): RecyclerView.Adapter<Commu
             date.text = item.date
             text.text = item.text
             documentId.text = 0.toString()
-            if(item.userUid != user?.uid.toString()) {
+
+            if(item.userUid != Firebase.auth.currentUser?.uid) {
                 icEdit.visibility = View.INVISIBLE;
             }
 
