@@ -128,7 +128,7 @@
                 android:layout_width="300dp"
                 android:layout_height="55dp"
                 android:inputType="textPassword"
-                android:hint="최소 8자 입력"
+                android:hint="문자,숫자,특수문자 포함 8자 이상 입력"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:paddingStart="5dp"
