@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -228,16 +229,27 @@ class SettingActivity : AppCompatActivity() {
     }
     fun delFirestorePosts(uid: String?) {
         fsDb.collection("posts").whereEqualTo("uid",uid).get().addOnSuccessListener { docs ->
-            var cnt : Int = 0
-            for(doc in docs) {
-                fsDb.collection("posts").document(doc.data["uid"].toString()).delete().addOnSuccessListener {
-                    cnt += 1
-                    if(cnt == docs.size()) {
-                        delAuth()
+            if(docs.size() == 0) {
+                delAuth()
+            } else {
+                var cnt : Int = 0
+                for(doc in docs) {
+                    fsDb.collection("posts").document(doc.data["uid"].toString()).delete().addOnSuccessListener {
+                        cnt += 1
+                        Log.d(">>>",cnt.toString() + docs.size().toString())
+                        if(cnt == docs.size()) {
+                            delAuth()
+                        }
+                    }.addOnFailureListener {
+                        val builder1 = AlertDialog.Builder(this)
+                        builder1.setTitle("회원탈퇴 실패")
+                        builder1.setMessage("회원탈퇴에 실패하였습니다. 관리자에게 문의하세요.")
+                        builder1.setPositiveButton("확인",null)
+                        builder1.show()
                     }
-                }.addOnFailureListener {
                 }
             }
+
 
         }
     }
