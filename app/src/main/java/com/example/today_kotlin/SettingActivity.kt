@@ -241,11 +241,7 @@ class SettingActivity : AppCompatActivity() {
                             delAuth()
                         }
                     }.addOnFailureListener {
-                        val builder1 = AlertDialog.Builder(this)
-                        builder1.setTitle("회원탈퇴 실패")
-                        builder1.setMessage("회원탈퇴에 실패하였습니다. 관리자에게 문의하세요.")
-                        builder1.setPositiveButton("확인",null)
-                        builder1.show()
+                        delAuth()
                     }
                 }
             }
@@ -258,7 +254,7 @@ class SettingActivity : AppCompatActivity() {
 
     fun delAuth() {
         val user = Firebase.auth.currentUser
-        val credential = EmailAuthProvider.getCredential(user.email, userPw)
+        val credential = EmailAuthProvider.getCredential(user.email.toString(), userPw)
         user.reauthenticate(credential).addOnCompleteListener {
             user.delete().addOnCompleteListener  { task ->
                 val builder1 = AlertDialog.Builder(this)

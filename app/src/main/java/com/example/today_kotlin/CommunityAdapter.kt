@@ -70,7 +70,7 @@ class CommunityAdapter(private val context: Context): RecyclerView.Adapter<Commu
             date.text = item.date
             text.text = item.text
             documentId.text = 0.toString()
-            if(item.userUid != user?.uid) {
+            if(item.userUid != user.uid) {
                 icEdit.visibility = View.INVISIBLE;
             }
 
