@@ -8,7 +8,8 @@
     android:orientation="vertical"
     android:gravity="center|bottom"
     android:background="@drawable/main"
-    android:id="@+id/registerBack">
+    android:id="@+id/registerBack"
+    android:paddingTop="50dp">
     <TextView
         android:id="@+id/logintext"
         android:layout_width="wrap_content"
@@ -25,122 +26,130 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="30dp"/>
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity ="center"
+        android:fillViewport="true"
+        android:id="@+id/scrollView">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="610dp"
+        android:layout_height="match_parent"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:layout_marginHorizontal="8dp"
         android:orientation="vertical"
         android:background="@drawable/login"
         android:gravity="center"
         android:layout_marginBottom="20dp">
-        <TextView
-            android:id="@+id/SignUpText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="SIGN UP"
-            android:fontFamily="@font/font2"
-            android:textColor="@color/white"
-            android:shadowColor="#23293A"
-            android:shadowDy="8.0"
-            android:shadowDx="8.0"
-            android:shadowRadius="3"
-            android:textSize="35sp"
-            android:layout_marginBottom="20dp"/>
 
-        <TextView
-            android:id="@+id/KEmailText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="이메일"
-            android:fontFamily="@font/font2"
-            android:textColor="@color/white"
-            android:shadowColor="#23293A"
-            android:shadowDy="4.0"
-            android:shadowDx="4.0"
-            android:shadowRadius="3"
-            android:textSize="22sp"/>
+            <TextView
+                android:id="@+id/SignUpText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SIGN UP"
+                android:fontFamily="@font/font2"
+                android:textColor="@color/white"
+                android:shadowColor="#23293A"
+                android:shadowDy="8.0"
+                android:shadowDx="8.0"
+                android:shadowRadius="3"
+                android:textSize="40sp"
+                android:layout_marginBottom="20dp"/>
 
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="300dp"
-            android:layout_height="55dp"
-            android:inputType="textEmailAddress"
-            android:hint="E-Mail"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:paddingStart="5dp"
-            android:background="@drawable/edit"/>
+            <TextView
+                android:id="@+id/KEmailText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="이메일"
+                android:fontFamily="@font/font2"
+                android:textColor="@color/white"
+                android:shadowColor="#23293A"
+                android:shadowDy="4.0"
+                android:shadowDx="4.0"
+                android:shadowRadius="3"
+                android:textSize="22sp"/>
 
-        <TextView
-            android:id="@+id/NicknameText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="닉네임"
-            android:fontFamily="@font/font2"
-            android:textSize="22sp"
-            android:textColor="@color/white"
-            android:shadowColor="#23293A"
-            android:shadowDy="4.0"
-            android:shadowDx="4.0"
-            android:shadowRadius="3"/>
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="300dp"
+                android:layout_height="55dp"
+                android:inputType="textEmailAddress"
+                android:hint="E-Mail"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:paddingStart="5dp"
+                android:background="@drawable/edit"/>
 
-        <EditText
-            android:id="@+id/username"
-            android:layout_width="300dp"
-            android:layout_height="55dp"
-            android:inputType="text"
-            android:hint="최대 8자 입력"
-            android:maxLength="8"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:paddingStart="5dp"
-            android:background="@drawable/edit"/>
+            <TextView
+                android:id="@+id/NicknameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="닉네임"
+                android:fontFamily="@font/font2"
+                android:textSize="22sp"
+                android:textColor="@color/white"
+                android:shadowColor="#23293A"
+                android:shadowDy="4.0"
+                android:shadowDx="4.0"
+                android:shadowRadius="3"/>
 
-        <TextView
-            android:id="@+id/PasswordText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="비밀번호"
-            android:fontFamily="@font/font2"
-            android:textSize="22sp"
-            android:textColor="@color/white"
-            android:shadowColor="#23293A"
-            android:shadowDy="4.0"
-            android:shadowDx="4.0"
-            android:shadowRadius="3"/>
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="300dp"
+                android:layout_height="55dp"
+                android:inputType="text"
+                android:hint="최대 8자 입력"
+                android:maxLength="8"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:paddingStart="5dp"
+                android:background="@drawable/edit"/>
 
-        <EditText
-            android:id="@+id/pw"
-            android:layout_width="300dp"
-            android:layout_height="55dp"
-            android:inputType="textPassword"
-            android:hint="최소 8자 입력"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:paddingStart="5dp"
-            android:background="@drawable/edit"/>
+            <TextView
+                android:id="@+id/PasswordText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="비밀번호"
+                android:fontFamily="@font/font2"
+                android:textSize="22sp"
+                android:textColor="@color/white"
+                android:shadowColor="#23293A"
+                android:shadowDy="4.0"
+                android:shadowDx="4.0"
+                android:shadowRadius="3"/>
 
-        <EditText
-            android:id="@+id/pwch"
-            android:layout_width="300dp"
-            android:layout_height="55dp"
-            android:layout_gravity="center"
-            android:hint="비밀번호 확인"
-            android:inputType="textPassword"
-            android:paddingStart="5dp"
-            android:background="@drawable/edit"/>
+            <EditText
+                android:id="@+id/pw"
+                android:layout_width="300dp"
+                android:layout_height="55dp"
+                android:inputType="textPassword"
+                android:hint="최소 8자 입력"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:paddingStart="5dp"
+                android:background="@drawable/edit"/>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp">
+            <EditText
+                android:id="@+id/pwch"
+                android:layout_width="300dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:hint="비밀번호 확인"
+                android:inputType="textPassword"
+                android:paddingStart="5dp"
+                android:background="@drawable/edit"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp">
             <Button
                 android:id="@+id/regBtn"
                 android:layout_width="140dp"
@@ -160,6 +169,9 @@
                 android:layout_marginLeft="2dp"
                 android:text="취소"
                 android:textSize="18sp"/>
+
+            </LinearLayout>
     </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 </LinearLayout>
+

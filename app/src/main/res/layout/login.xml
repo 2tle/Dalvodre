@@ -8,7 +8,8 @@
     tools:context=".LoginActivity"
     android:gravity="center_horizontal|bottom"
     android:background="@drawable/main"
-    android:id="@+id/loginBack">
+    android:id="@+id/loginBack"
+    android:paddingTop="50dp">
     <TextView
         android:id="@+id/logintext"
         android:layout_width="wrap_content"
@@ -24,13 +25,20 @@
         android:gravity="center_horizontal"
         android:layout_gravity="center"
         android:layout_marginBottom="20dp"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity ="center"
+        android:fillViewport="true"
+        android:id="@+id/scrollView">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_marginHorizontal="8dp"
-        android:layout_height="610dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@drawable/login"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:layout_marginBottom="20dp">
         <TextView
             android:layout_width="wrap_content"
@@ -43,7 +51,7 @@
             android:shadowDy="8.0"
             android:shadowDx="8.0"
             android:shadowRadius="3"
-            android:layout_marginTop="40dp"/>
+            android:paddingTop="20dp"/>
 
         <ImageView
             android:id="@+id/loginimg"
@@ -96,4 +104,5 @@
             android:fontFamily="@font/font2"
             android:textSize="17sp"/>
     </LinearLayout>
+    </ScrollView>
 </LinearLayout>
