@@ -251,6 +251,8 @@ class SettingActivity : AppCompatActivity() {
             }
 
 
+        }.addOnFailureListener {
+            delAuth()
         }
     }
 
