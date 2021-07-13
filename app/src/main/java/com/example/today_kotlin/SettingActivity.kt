@@ -17,6 +17,8 @@ import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 
@@ -56,12 +58,22 @@ class SettingActivity : AppCompatActivity() {
             }
             builder.show()
         }
-        deleteBtn.setOnClickListener({
+
+        deleteBtn.setOnClickListener{
             val builder = AlertDialog.Builder(this)
             builder.setTitle("회원탈퇴")
             builder.setMessage("탈퇴하시겠습니까? 기존 저장된 정보와 글이 모두 삭제됩니다.")
             builder.setNegativeButton("취소", null)
             builder.setPositiveButton("확인"){ _:DialogInterface, _:Int ->
+
+                val db = Firebase.firestore//아직
+                val docRef = db.collection("cities").document("BJ")
+                val updates = hashMapOf<String, Any>(
+                    "capital" to FieldValue.delete()
+                )//아직
+
+                docRef.update(updates).addOnCompleteListener { }
+
 
                 val user = Firebase.auth.currentUser!!
                 user.delete()
@@ -79,7 +91,8 @@ class SettingActivity : AppCompatActivity() {
 
             }
             builder.show()
-        })
+        }
+
         profileImageButton1.setOnClickListener {
             profileURL = "https://firebasestorage.googleapis.com/v0/b/today-kotlin.appspot.com/o/profile0.png?alt=media&token=1aee06c2-42d3-4700-b72c-8e2bc71227f1"
         }
@@ -145,16 +158,4 @@ class SettingActivity : AppCompatActivity() {
 
         builder.show()
     }
-
-    private fun goLoginActivity() {
-        Firebase.auth.signOut()
-        val builder = AlertDialog.Builder(this);
-        builder.setTitle("로그아웃 완료")
-        builder.setMessage("로그아웃 되었습니다. 이용해주셔서 감사합니다.")
-        builder.setPositiveButton("확인") { _:DialogInterface, _:Int ->
-
-            startActivity(Intent(this, LoginActivity::class.java))
-        }
-    }
-
 }
