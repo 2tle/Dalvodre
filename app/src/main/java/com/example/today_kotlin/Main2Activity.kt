@@ -87,6 +87,9 @@ class Main2Activity : AppCompatActivity() {
 
     override fun onStart(){
         super.onStart()
+        if (Firebase.auth.currentUser == null){
+            startActivity(Intent(this,LoginActivity::class.java))
+        }
         auth = Firebase.auth
     }
 
