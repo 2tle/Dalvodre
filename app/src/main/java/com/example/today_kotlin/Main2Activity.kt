@@ -23,6 +23,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class Main2Activity : AppCompatActivity() {
 
@@ -40,6 +42,16 @@ class Main2Activity : AppCompatActivity() {
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
         val drawer: Button = findViewById(R.id.btn_dr)
+        val dateTime: LocalDateTime = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("HH")
+        val formatted = dateTime.format(formatter)
+        val background : LinearLayout = findViewById(R.id.navVar) //여기까지 선언
+
+        if(formatted.toInt() in 5..16)
+            background.setBackgroundResource(R.drawable.side_nav_bar_not)
+        if(formatted.toInt() in 16..21)
+            background.setBackgroundResource(R.drawable.side_nav_bar_dinner) //시간에 따라 테마 변경
+
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home, R.id.nav_save, R.id.nav_community

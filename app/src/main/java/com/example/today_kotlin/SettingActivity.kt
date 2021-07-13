@@ -63,12 +63,7 @@ class SettingActivity : AppCompatActivity() {
             builder.setNegativeButton("취소", null)
             builder.setPositiveButton("확인"){ _:DialogInterface, _:Int ->
 
-                private lateinit var database: DatabaseReference{
-
-                val db = Firebase.database.reference
                 val user = Firebase.auth.currentUser!!
-                val uid = user.uid
-                val users = db.collections("users").removeValue()
                 user.delete()
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
@@ -81,7 +76,6 @@ class SettingActivity : AppCompatActivity() {
                             builder.show()
                         }
                     }
-            }
 
             }
             builder.show()
