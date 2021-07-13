@@ -52,6 +52,12 @@ class CommunityAdapter(private val context: Context): RecyclerView.Adapter<Commu
         val intent = Intent(context, EditActivity::class.java)
         //intent.putExtra("docId",item.docuUid)
         fun bind(item: CommunityData) {
+            if(item.userUid != Firebase.auth.currentUser?.uid.toString()) {
+                icEdit.visibility = View.INVISIBLE
+            }
+            if(item.userUid == Firebase.auth.currentUser?.uid.toString()) {
+                icEdit.visibility = View.VISIBLE
+            }
             intent.putExtra("documentID",item.docuUid)
             intent.putExtra("words",item.words)
             intent.putExtra("text",item.text)
@@ -71,10 +77,8 @@ class CommunityAdapter(private val context: Context): RecyclerView.Adapter<Commu
             date.text = item.date
             text.text = item.text
             documentId.text = 0.toString()
+            Log.d(">>>",item.userUid+" "+Firebase.auth.currentUser?.uid)
 
-            if(item.userUid != Firebase.auth.currentUser?.uid) {
-                icEdit.visibility = View.INVISIBLE;
-            }
 
             when (item.backgroundType) {
                 1 -> {

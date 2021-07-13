@@ -62,7 +62,7 @@ class LoginActivity: AppCompatActivity() {
         super.onStart()
         auth = Firebase.auth;
         var currentUser = auth.currentUser
-       // currentUser = null
+        //currentUser = null
         if(currentUser != null) {
             startActivity(Intent(this, SubActivity::class.java))
         }
