@@ -38,6 +38,7 @@ class RegisterActivity : AppCompatActivity() {
         val regBtn = findViewById<Button>(R.id.regBtn)
         val ccBtn = findViewById<Button>(R.id.ccBtn)
         val emailValidation = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
+        val pwRegex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[~!@#\$%^&*()+|=])[A-Za-z\\d~!@#\$%^&*()+|=]{8,16}"
         var check1 = false
         var check2 = false
         var check3 = false
@@ -57,6 +58,32 @@ class RegisterActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
         } //취소 버튼 눌렀을 때 다시 로그인 화면으로 돌아가기
 
+
+        fun checkPw() {
+            val pwData = pw.text.toString()
+            check1 = Pattern.matches(pwRegex, pwData)
+            if(check1 && check2 && check3 && check4) {
+                regBtn.isClickable = true
+                regBtn.isEnabled = true
+            } else {
+                regBtn.isClickable =false
+                regBtn.isEnabled=false
+            }
+
+        }
+
+        fun checkPwCheck() {
+            val pwcData = pwCheck.text.toString()
+            check2 = Pattern.matches(pwRegex, pwcData) && (pw.text.toString() == pwcData)
+            if(check1 && check2 && check3 && check4) {
+                regBtn.isClickable = true
+                regBtn.isEnabled = true
+            } else {
+                regBtn.isClickable =false
+                regBtn.isEnabled=false
+            }
+        }
+
         pw.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?){ //텍스트 입력 후 일어나는 일. 없는데 안쓰면 오류나서 같이 넣음
             }
@@ -65,27 +92,13 @@ class RegisterActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { //텍스트 입력 중 일어나는 일, 올바르게 작성시 check1을 true로 반환한다
-                check1 = pw.length() >= 8 && pw != null
-                if (check2 && check1 && check3 && check4) { //모두 true라면 버튼 활성화, 아니라면 비활성화 유지
-                    regBtn.isClickable = true
-                    regBtn.isEnabled = true
-                } else {
-                    regBtn.isClickable = false
-                    regBtn.isEnabled = false
-                }
+                checkPw()
             }
         }) //비밀번호 8자 이하거나 공백이면 회원가입 불가
 
         pwCheck.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                check2 = pw.text.toString() == pwCheck.text.toString() && pwCheck != null //형식에 맞으면 check2를 true로 반환
-                if (check2 && check1 && check3 && check4) { //모두 true라면 버튼 활성화, 아니라면 비활성화 유지
-                    regBtn.isClickable = true
-                    regBtn.isEnabled = true
-                } else {
-                    regBtn.isClickable = false
-                    regBtn.isEnabled = false
-                }
+                checkPwCheck()
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -94,6 +107,8 @@ class RegisterActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             }
         }) //비밀번호 재확인에서 위의 비밀번호와 다르거나 공백이면 회원가입 불가
+
+
 
 
         fun checkEmail() {
