@@ -22,6 +22,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 
+@Suppress("RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class SettingActivity : AppCompatActivity() {
     @SuppressLint("CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +44,7 @@ class SettingActivity : AppCompatActivity() {
         val ccBtn = findViewById<Button>(R.id.ccBtn)
         val nickName = findViewById<EditText>(R.id.set_username)
         val logoutBtn: Button = findViewById(R.id.logoutBtn)
-        val deleteBtn : Button = findViewById(R.id.deleteBtn)
+        val deleteBtn: Button = findViewById(R.id.deleteBtn)
         val auth = FirebaseAuth.getInstance()
         var user = auth.currentUser
         nickName.setText(user?.displayName)
@@ -53,30 +54,44 @@ class SettingActivity : AppCompatActivity() {
             val builder = AlertDialog.Builder(this);
             builder.setTitle("로그아웃 완료")
             builder.setMessage("로그아웃 되었습니다. 이용해주셔서 감사합니다.")
-            builder.setPositiveButton("확인") { _:DialogInterface, _:Int ->
+            builder.setPositiveButton("확인") { _: DialogInterface, _: Int ->
                 startActivity(Intent(this, LoginActivity::class.java))
             }
             builder.show()
         }
 
-        deleteBtn.setOnClickListener{
+        deleteBtn.setOnClickListener {
             val builder = AlertDialog.Builder(this)
             builder.setTitle("회원탈퇴")
             builder.setMessage("탈퇴하시겠습니까? 기존 저장된 정보와 글이 모두 삭제됩니다.")
             builder.setNegativeButton("취소", null)
-            builder.setPositiveButton("확인"){ _:DialogInterface, _:Int ->
+            builder.setPositiveButton("확인") { _: DialogInterface, _: Int ->
 
-                val db = Firebase.firestore//아직
-                val docRef = db.collection("cities").document("BJ")
-                val updates = hashMapOf<String, Any>(
-                    "capital" to FieldValue.delete()
-                )//아직
+                //db.collection("cities").document("DC")
+                //        .delete()
 
-                docRef.update(updates).addOnCompleteListener { }
+                val db = Firebase.firestore
+                val userUid : String? = Firebase.auth.currentUser?.uid
 
 
-                val user = Firebase.auth.currentUser!!
-                user.delete()
+                if (userUid != null) {
+                    db.collection("users").document(userUid).delete()
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                Firebase.auth.signOut()
+                                val builder1 = AlertDialog.Builder(this)
+                                builder1.setTitle("회원탈퇴 완료")
+                                builder1.setMessage("회원탈퇴 되었습니다. 이용해주셔서 감사합니다.")
+                                builder1.setPositiveButton("확인") { _: DialogInterface, _: Int ->
+                                    startActivity(
+                                        Intent(baseContext, LoginActivity::class.java))
+                                }
+                                builder1.show()
+                            }
+                        }
+                }
+
+                /*user.delete()
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             val builder = AlertDialog.Builder(this)
@@ -87,68 +102,84 @@ class SettingActivity : AppCompatActivity() {
                             }
                             builder.show()
                         }
-                    }
+                    }*/
 
             }
             builder.show()
         }
 
         profileImageButton1.setOnClickListener {
-            profileURL = "https://firebasestorage.googleapis.com/v0/b/today-kotlin.appspot.com/o/profile0.png?alt=media&token=1aee06c2-42d3-4700-b72c-8e2bc71227f1"
+            profileURL =
+                "https://firebasestorage.googleapis.com/v0/b/today-kotlin.appspot.com/o/profile0.png?alt=media&token=1aee06c2-42d3-4700-b72c-8e2bc71227f1"
         }
         profileImageButton2.setOnClickListener {
-            profileURL = "https://firebasestorage.googleapis.com/v0/b/today-kotlin.appspot.com/o/profil1.png?alt=media&token=e5458af0-85c6-4245-b481-dc9483a3c8f3"
+            profileURL =
+                "https://firebasestorage.googleapis.com/v0/b/today-kotlin.appspot.com/o/profil1.png?alt=media&token=e5458af0-85c6-4245-b481-dc9483a3c8f3"
         }
         profileImageButton3.setOnClickListener {
-            profileURL = "https://firebasestorage.googleapis.com/v0/b/today-kotlin.appspot.com/o/profil2.png?alt=media&token=0063079e-b621-45e2-b0e5-b5ec8d9b1586"
+            profileURL =
+                "https://firebasestorage.googleapis.com/v0/b/today-kotlin.appspot.com/o/profil2.png?alt=media&token=0063079e-b621-45e2-b0e5-b5ec8d9b1586"
         }
         profileImageButton4.setOnClickListener {
-            profileURL = "https://firebasestorage.googleapis.com/v0/b/today-kotlin.appspot.com/o/profil3.png?alt=media&token=800243fc-54db-412c-9ee0-82229562b41b"
+            profileURL =
+                "https://firebasestorage.googleapis.com/v0/b/today-kotlin.appspot.com/o/profil3.png?alt=media&token=800243fc-54db-412c-9ee0-82229562b41b"
         }
         profileImageButton5.setOnClickListener {
-            profileURL = "https://firebasestorage.googleapis.com/v0/b/today-kotlin.appspot.com/o/profil4.png?alt=media&token=cf27df74-bcb7-47ae-8a50-dacb42ec327e"
+            profileURL =
+                "https://firebasestorage.googleapis.com/v0/b/today-kotlin.appspot.com/o/profil4.png?alt=media&token=cf27df74-bcb7-47ae-8a50-dacb42ec327e"
         }
-        ccBtn.setOnClickListener{
+        ccBtn.setOnClickListener {
             startActivity(Intent(this, Main2Activity::class.java))
         }
         regBtn.setOnClickListener {
-            if(profilePwCh.text.toString() != "" && profilePw.text.toString() != "" && profileUsername.text.toString() != "" && profilePwCh.text.toString().length >= 8) {
-                if(profileURL == "") profileURL = "https://firebasestorage.googleapis.com/v0/b/today-kotlin.appspot.com/o/profile0.png?alt=media&token=1aee06c2-42d3-4700-b72c-8e2bc71227f1"
+            if (profilePwCh.text.toString() != "" && profilePw.text.toString() != "" && profileUsername.text.toString() != "" && profilePwCh.text.toString().length >= 8) {
+                if (profileURL == "") profileURL =
+                    "https://firebasestorage.googleapis.com/v0/b/today-kotlin.appspot.com/o/profile0.png?alt=media&token=1aee06c2-42d3-4700-b72c-8e2bc71227f1"
                 val profileUpdates = userProfileChangeRequest {
                     displayName = profileUsername.text.toString()
                     photoUri = Uri.parse(profileURL)
                 }
-                user!!.reauthenticate(EmailAuthProvider.getCredential(profileEmail.text as String, profilePw.text.toString())).addOnSuccessListener {
-                    user.updateProfile(profileUpdates).addOnCompleteListener{ task ->
-                        if(task.isSuccessful) {
-                            user.updatePassword(profilePwCh.text.toString()).addOnCompleteListener{ task1 ->
-                                if(task1.isSuccessful) {
-                                    showAlertDialog("정보 변경 완료","정보가 변경되었습니다.",true)
-                                } else {
-                                    showAlertDialog("정보 변경 오류",task1.exception?.message.toString(),false)
+                user!!.reauthenticate(
+                    EmailAuthProvider.getCredential(
+                        profileEmail.text as String,
+                        profilePw.text.toString()
+                    )
+                ).addOnSuccessListener {
+                    user.updateProfile(profileUpdates).addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            user.updatePassword(profilePwCh.text.toString())
+                                .addOnCompleteListener { task1 ->
+                                    if (task1.isSuccessful) {
+                                        showAlertDialog("정보 변경 완료", "정보가 변경되었습니다.", true)
+                                    } else {
+                                        showAlertDialog(
+                                            "정보 변경 오류",
+                                            task1.exception?.message.toString(),
+                                            false
+                                        )
+                                    }
                                 }
-                            }
                         } else {
-                            showAlertDialog("정보 변경 오류",task.exception?.message.toString(),false)
+                            showAlertDialog("정보 변경 오류", task.exception?.message.toString(), false)
                         }
                     }
                 }.addOnFailureListener {
-                    showAlertDialog("정보 변경 오류","재인증 실패. 비밀번호를 확인해주세요.", false)
+                    showAlertDialog("정보 변경 오류", "재인증 실패. 비밀번호를 확인해주세요.", false)
                 }
 
             } else {
-                showAlertDialog("정보 변경 오류","입력을 확인해주세요.",false)
+                showAlertDialog("정보 변경 오류", "입력을 확인해주세요.", false)
             }
         }
 
 
     }
 
-    private fun showAlertDialog(title: String, message: String, isPositiveBtnListener: Boolean ) {
+    private fun showAlertDialog(title: String, message: String, isPositiveBtnListener: Boolean) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(title)
         builder.setMessage(message)
-        if(isPositiveBtnListener) {
+        if (isPositiveBtnListener) {
             builder.setPositiveButton("확인") { _: DialogInterface, _: Int ->
                 startActivity(Intent(this, Main2Activity::class.java))
             }
