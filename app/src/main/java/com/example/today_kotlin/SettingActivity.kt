@@ -22,6 +22,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 
+@Suppress("RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class SettingActivity : AppCompatActivity() {
     @SuppressLint("CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,24 +70,26 @@ class SettingActivity : AppCompatActivity() {
                 //db.collection("cities").document("DC")
                 //        .delete()
 
-                val user = Firebase.auth.currentUser!!
                 val db = Firebase.firestore
-                val usuid = user.uid
-                Firebase.auth.signOut()
+                val userUid : String? = Firebase.auth.currentUser?.uid
 
-                db.collection("users").document(usuid).delete()
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            val builder1 = AlertDialog.Builder(this)
-                            builder1.setTitle("회원탈퇴 완료")
-                            builder1.setMessage("회원탈퇴 되었습니다. 이용해주셔서 감사합니다.")
-                            builder1.setPositiveButton("확인") { _: DialogInterface, _: Int ->
-                                startActivity(
-                                    Intent(baseContext, LoginActivity::class.java))
+
+                if (userUid != null) {
+                    db.collection("users").document(userUid).delete()
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                Firebase.auth.signOut()
+                                val builder1 = AlertDialog.Builder(this)
+                                builder1.setTitle("회원탈퇴 완료")
+                                builder1.setMessage("회원탈퇴 되었습니다. 이용해주셔서 감사합니다.")
+                                builder1.setPositiveButton("확인") { _: DialogInterface, _: Int ->
+                                    startActivity(
+                                        Intent(baseContext, LoginActivity::class.java))
+                                }
+                                builder1.show()
                             }
-                            builder1.show()
                         }
-                    }
+                }
 
                 /*user.delete()
                     .addOnCompleteListener { task ->
