@@ -41,6 +41,7 @@ class SettingActivity : AppCompatActivity() {
         val ccBtn = findViewById<Button>(R.id.ccBtn)
         val nickName = findViewById<EditText>(R.id.set_username)
         val logoutBtn: Button = findViewById(R.id.logoutBtn)
+        val deleteBtn : Button = findViewById(R.id.deleteBtn)
         val auth = FirebaseAuth.getInstance()
         var user = auth.currentUser
         nickName.setText(user?.displayName)
@@ -55,6 +56,36 @@ class SettingActivity : AppCompatActivity() {
             }
             builder.show()
         }
+        deleteBtn.setOnClickListener({
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("회원탈퇴")
+            builder.setMessage("탈퇴하시겠습니까? 기존 저장된 정보와 글이 모두 삭제됩니다.")
+            builder.setNegativeButton("취소", null)
+            builder.setPositiveButton("확인"){ _:DialogInterface, _:Int ->
+
+                private lateinit var database: DatabaseReference{
+
+                val db = Firebase.database.reference
+                val user = Firebase.auth.currentUser!!
+                val uid = user.uid
+                val users = db.collections("users").removeValue()
+                user.delete()
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            val builder = AlertDialog.Builder(this)
+                            builder.setTitle("회원탈퇴 완료")
+                            builder.setMessage("회원탈퇴 되었습니다. 이용해주셔서 감사합니다.")
+                            builder.setPositiveButton("확인") { _: DialogInterface, _: Int ->
+                                startActivity(Intent(this, LoginActivity::class.java))
+                            }
+                            builder.show()
+                        }
+                    }
+            }
+
+            }
+            builder.show()
+        })
         profileImageButton1.setOnClickListener {
             profileURL = "https://firebasestorage.googleapis.com/v0/b/today-kotlin.appspot.com/o/profile0.png?alt=media&token=1aee06c2-42d3-4700-b72c-8e2bc71227f1"
         }

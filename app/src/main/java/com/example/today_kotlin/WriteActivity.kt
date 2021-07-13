@@ -116,7 +116,7 @@ class WriteActivity : AppCompatActivity() {
         builder.setMessage(message)
         if(isPositiveBtnListener) {
             builder.setPositiveButton("확인") { _: DialogInterface, _: Int ->
-                startActivity(Intent(this, CommunityViewModel::class.java))
+                startActivity(Intent(baseContext, CommunityViewModel::class.java))
             }
         }
         else builder.setPositiveButton("확인", null);
