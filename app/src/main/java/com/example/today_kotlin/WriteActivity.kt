@@ -44,7 +44,7 @@ class WriteActivity : AppCompatActivity() {
         if(formatted.toInt() in 5..16) {
             background.setBackgroundResource(R.drawable.not)
             backgroundType = 1
-        }else if(formatted.toInt() in 16..21) {
+        }else if(formatted.toInt() in 17..21) {
             background.setBackgroundResource(R.drawable.dinner)
             backgroundType = 2
         } //시간에 따른 테마 변경
