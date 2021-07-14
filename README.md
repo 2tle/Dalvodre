@@ -10,12 +10,18 @@ Dalvodre is an app that gives users random sentenses every day to solve the thei
 [ Jeong-in Lee ](https://github.com/Jeongin205)<br />
  - XML <br />
  - Background and Icon Design <br />
+
+
 [ Hyun-jun Yang ](https://github.com/2tle)<br />
  - Kotlin <br />
  - Firebase Auth / Firestore <br />
+
+
 [ Ji-hyun Lee ](https://github.com/JiHyun13)<br />
  - Kotlin <br />
  - Icon Design <br />
+
+
 [ Young-jin Kim ](https://github.com/jinagabnida) <br />
  - Icon Design <br />
 
