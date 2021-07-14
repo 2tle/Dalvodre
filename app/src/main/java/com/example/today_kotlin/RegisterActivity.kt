@@ -144,7 +144,7 @@ class RegisterActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                check4 = name.length() < 8 && !name.equals(" ") //형식에 맞으면 check4를 true로 반환
+                check4 = name.length() <= 8 && !name.equals(" ") //형식에 맞으면 check4를 true로 반환
                 if (check2 && check1 && check3 && check4) { //모두 true라면 버튼 활성화, 아니라면 비활성화 유지
                     regBtn.isClickable = true
                     regBtn.isEnabled = true
