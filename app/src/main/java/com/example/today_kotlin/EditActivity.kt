@@ -44,15 +44,11 @@ class EditActivity : AppCompatActivity() {
         sendBtn.setOnClickListener {
             updatePost(tUserInput.text.toString(), intent.extras?.getString("documentID").toString())
         }
-
-
-
     }
 
     override fun onStart() {
         super.onStart()
     }
-
 
     private fun updatePost(message: String, docuId: String) {
         val db = Firebase.firestore
@@ -64,7 +60,6 @@ class EditActivity : AppCompatActivity() {
         }.addOnFailureListener { e->
             showAlertDialog("오류발생",e.message.toString());
         }
-
 
     }
 
