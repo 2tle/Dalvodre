@@ -53,12 +53,9 @@ class RegisterActivity : AppCompatActivity() {
         if(formatted.toInt() in 16..21)
             background.setBackgroundResource(R.drawable.dinner) //시간에 따라 테마 변경
 
-
         ccBtn.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
         } //취소 버튼 눌렀을 때 다시 로그인 화면으로 돌아가기
-
-
         fun checkPw() {
             val pwData = pw.text.toString()
             check1 = Pattern.matches(pwRegex, pwData)
@@ -144,7 +141,7 @@ class RegisterActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                check4 = name.length() < 8 && !name.equals(" ") //형식에 맞으면 check4를 true로 반환
+                check4 = name.length() <= 8 && !name.equals(" ") //형식에 맞으면 check4를 true로 반환
                 if (check2 && check1 && check3 && check4) { //모두 true라면 버튼 활성화, 아니라면 비활성화 유지
                     regBtn.isClickable = true
                     regBtn.isEnabled = true
