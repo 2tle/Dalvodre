@@ -68,7 +68,7 @@ class Main2Activity : AppCompatActivity() {
         val background : LinearLayout = headerView.findViewById(R.id.navBar)
         val handler : Button = findViewById(R.id.btn_dr)//여기까지 선언
 
-        if(formatted.toInt() in 5..16) {
+        if(formatted.toInt() in 5..15) {
             background.setBackgroundResource(R.drawable.side_nav_bar_not)
             handler.setBackgroundResource(R.drawable.nav_handler_not)
         }
