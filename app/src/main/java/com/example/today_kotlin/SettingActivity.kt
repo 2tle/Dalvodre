@@ -257,6 +257,7 @@ class SettingActivity : AppCompatActivity() {
         val credential = EmailAuthProvider.getCredential(user.email.toString(), userPw)
         user.reauthenticate(credential).addOnCompleteListener {
             user.delete().addOnCompleteListener  { task ->
+                Firebase.auth.signOut()
                 val builder1 = AlertDialog.Builder(this)
                 if(task.isSuccessful) {
 
