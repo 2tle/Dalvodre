@@ -12,24 +12,28 @@
       android:orientation="horizontal"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:gravity="center_horizontal"
+      android:gravity="center_vertical"
       app:layout_constraintTop_toTopOf="parent">
     <ImageButton
         android:id="@+id/ic_back"
         android:layout_width="60dp"
         android:layout_height="55dp"
         android:src="@drawable/ic_back"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="135dp"
+        android:layout_gravity="left|center_vertical"
+        android:layout_marginLeft="5dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         android:backgroundTint="#00ff0000"/>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
     <ImageButton
         android:id="@+id/ic_send"
         android:layout_width="65dp"
         android:layout_height="65dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="135dp"
+        android:layout_marginRight="5dp"
+        android:layout_gravity="right"
         android:src="@drawable/ic_send"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
@@ -57,14 +61,15 @@
   <EditText
       android:id="@+id/write_post"
       android:layout_width="320dp"
-      android:layout_height="350dp"
+      android:layout_height="match_parent"
       android:layout_gravity="center"
+      android:layout_marginBottom="30dp"
       android:layout_marginTop="10dp"
       android:fontFamily="@font/font2"
-      android:gravity="top"
       android:background="@drawable/edit2"
       android:paddingTop="6dp"
       android:paddingLeft="6dp"
+      android:gravity="top"
       android:hint="공유한 내용을 수정하세요"
       android:inputType="none"/>
 

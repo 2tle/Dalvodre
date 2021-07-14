@@ -96,6 +96,8 @@ class CommunityAdapter(private val context: Context): RecyclerView.Adapter<Commu
                 documentId.text = 1.toString()
             }
             heartBtn.setOnClickListener {
+                heartBtn.isClickable = false
+                heartBtn.isEnabled = false
                 if(documentId.text == "1") {
                     val docRef1 = db.collection("posts").document(item.docuUid)
                     docRef1.get().addOnSuccessListener { document1 ->
@@ -116,6 +118,8 @@ class CommunityAdapter(private val context: Context): RecyclerView.Adapter<Commu
                                 heartBtn.setImageResource(drawable.ic_heart)
                                 heartCount.text = (Integer.parseInt(heartCount.text as String) - 1).toString()
                                 documentId.text = 0.toString()
+                                heartBtn.isClickable = true
+                                heartBtn.isEnabled = true
                             }
 
                         }
@@ -140,6 +144,8 @@ class CommunityAdapter(private val context: Context): RecyclerView.Adapter<Commu
                                 heartBtn.setImageResource(drawable.ic_fullheart)
                                 heartCount.text = (Integer.parseInt(heartCount.text as String) +  1).toString()
                                 documentId.text = 1.toString()
+                                heartBtn.isClickable = true
+                                heartBtn.isEnabled = true
                             }
 
                         }

@@ -53,111 +53,46 @@ class RegisterActivity : AppCompatActivity() {
         if(formatted.toInt() in 16..21)
             background.setBackgroundResource(R.drawable.dinner) //시간에 따라 테마 변경
 
-
         ccBtn.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
         } //취소 버튼 눌렀을 때 다시 로그인 화면으로 돌아가기
 
 
-        fun checkPw() {
-            val pwData = pw.text.toString()
-            check1 = Pattern.matches(pwRegex, pwData)
-            if(check1 && check2 && check3 && check4) {
-                regBtn.isClickable = true
-                regBtn.isEnabled = true
-            } else {
-                regBtn.isClickable =false
-                regBtn.isEnabled=false
-            }
-
+        fun checkEmail() : Boolean {
+            return Pattern.matches(emailValidation, email.text.toString().trim())
         }
 
-        fun checkPwCheck() {
-            val pwcData = pwCheck.text.toString()
-            check2 = Pattern.matches(pwRegex, pwcData) && (pw.text.toString() == pwcData)
-            if(check1 && check2 && check3 && check4) {
-                regBtn.isClickable = true
-                regBtn.isEnabled = true
-            } else {
-                regBtn.isClickable =false
-                regBtn.isEnabled=false
-            }
+        fun checkPw() : Boolean {
+            return Pattern.matches(pwRegex, pw.text.toString())
         }
 
-        pw.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?){ //텍스트 입력 후 일어나는 일. 없는데 안쓰면 오류나서 같이 넣음
-            }
+        fun checkPwCheck(): Boolean {
+            return Pattern.matches(pwRegex, pwCheck.text.toString()) && (pw.text.toString() == pwCheck.text.toString())
+        }
 
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { //텍스트 입력 전 일어나는 일, 없는데 안쓰면 오류나서 같이 넣음
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { //텍스트 입력 중 일어나는 일, 올바르게 작성시 check1을 true로 반환한다
-                checkPw()
-            }
-        }) //비밀번호 8자 이하거나 공백이면 회원가입 불가
-
-        pwCheck.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                checkPwCheck()
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-        }) //비밀번호 재확인에서 위의 비밀번호와 다르거나 공백이면 회원가입 불가
-
-
-
-
-        fun checkEmail() {
-            val email = email.text.toString().trim() //공백제거
-            val p = Pattern.matches(emailValidation, email) // 입력된 이메일이 주어진 형식에 맞는지 확인
-            check3 = p //형식에 맞으면 check3을 true로 반환
-            if (check2 && check1 && check3 && check4) { //모두 true라면 버튼 활성화, 아니라면 비활성화 유지
-                regBtn.isClickable = true
-                regBtn.isEnabled = true
+        fun checkName(): Boolean {
+            return name.text.toString().length <= 8 && name.text.toString() != ""
+        }
+        regBtn.setOnClickListener{
+            check1 = checkEmail()
+            check2 = checkName()
+            check3 = checkPw()
+            check4 = checkPwCheck()
+            if(check1 && check2 && check3 && check4) {
+                createAccount(email.text.toString(),pw.text.toString(), name.text.toString())
             } else {
-                regBtn.isClickable = false
-                regBtn.isEnabled = false
-            }
-        } //이메일 판단 함수
-
-        email.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                checkEmail()
-            }
-        }) //이메일 형식 오류시 회원가입 불가
-
-        name.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                check4 = name.length() <= 8 && !name.equals(" ") //형식에 맞으면 check4를 true로 반환
-                if (check2 && check1 && check3 && check4) { //모두 true라면 버튼 활성화, 아니라면 비활성화 유지
-                    regBtn.isClickable = true
-                    regBtn.isEnabled = true
-                } else {
-                    regBtn.isClickable = false
-                    regBtn.isEnabled = false
+                if(!check1) {
+                    showAlertDialog("회원가입 오류","이메일을 확인해주세요",false)
+                } else if(!check2) {
+                    showAlertDialog("회원가입 오류","닉네임을 확인해주세요.",false)
+                } else if(!check3) {
+                    showAlertDialog("회원가입 오류","비밀번호는 특수기호, 문자, 숫자를 사용해 8자 이상 16자 이하로 해주세요.",false)
+                } else if(!check4) {
+                    showAlertDialog("회원가입 오류","비밀번호와 확인이 서로 일치하지 않습니다.",false)
                 }
             }
-        }) //이름이 8자 초과이거나 공백 포함인경우 회원가입 불가
 
-        regBtn.setOnClickListener{
-            createAccount(email.text.toString(),pw.text.toString(), name.text.toString())
-        } //버튼 눌렀을 때 저장됨
+        }
     }
 
     private fun showAlertDialog(title: String, message: String, isPositiveBtnListener: Boolean ) {

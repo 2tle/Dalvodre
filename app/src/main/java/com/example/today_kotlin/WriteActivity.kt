@@ -24,7 +24,7 @@ import kotlin.collections.ArrayList
     "NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS", "UNCHECKED_CAST"
 )
 class WriteActivity : AppCompatActivity() {
-
+    lateinit var sendBtn : ImageButton
     @SuppressLint("CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +34,7 @@ class WriteActivity : AppCompatActivity() {
         val formatter = DateTimeFormatter.ofPattern("HH")
         val formatted = dateTime.format(formatter)
         val background: TextView = findViewById(R.id.write_word)
-        val sendBtn : ImageButton = findViewById(R.id.ic_send)
+        sendBtn = findViewById(R.id.ic_send)
         val words: TextView = findViewById(R.id.write_word)
         val text : EditText = findViewById(R.id.write_post)
         val backBtn : ImageButton = findViewById(R.id.ic_back)
@@ -50,6 +50,8 @@ class WriteActivity : AppCompatActivity() {
         } //시간에 따른 테마 변경
 
         sendBtn.setOnClickListener{
+            sendBtn.isEnabled = false
+            sendBtn.isClickable = false
             sendPost(user.uid,user.photoUrl.toString(),user.displayName, words.text.toString(), text.text.toString(), backgroundType );
         }
 
@@ -105,6 +107,8 @@ class WriteActivity : AppCompatActivity() {
             "date" to LocalDateTime.now().format(DateTimeFormatter.ISO_DATE)
         )
         db.collection("posts").document().set(data).addOnSuccessListener {
+            sendBtn.isEnabled = true
+            sendBtn.isClickable = true
             showAlertDialog("포스팅 성공","너나들이에 포스트 작성이 완료되었습니다.",true)
         }
 
