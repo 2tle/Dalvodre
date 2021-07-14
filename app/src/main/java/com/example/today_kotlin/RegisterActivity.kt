@@ -53,12 +53,9 @@ class RegisterActivity : AppCompatActivity() {
         if(formatted.toInt() in 16..21)
             background.setBackgroundResource(R.drawable.dinner) //시간에 따라 테마 변경
 
-
         ccBtn.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
         } //취소 버튼 눌렀을 때 다시 로그인 화면으로 돌아가기
-
-
         fun checkPw() {
             val pwData = pw.text.toString()
             check1 = Pattern.matches(pwRegex, pwData)
