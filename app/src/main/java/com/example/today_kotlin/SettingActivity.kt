@@ -28,6 +28,7 @@ class SettingActivity : AppCompatActivity() {
     @SuppressLint("CutPasteId")
     val fsDb = Firebase.firestore
     lateinit var userPw: String;
+    @SuppressLint("CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
@@ -40,7 +41,7 @@ class SettingActivity : AppCompatActivity() {
         val profileImageButton3 = findViewById<ImageButton>(R.id.profile3)
         val profileImageButton4 = findViewById<ImageButton>(R.id.profile4)
         val profileImageButton5 = findViewById<ImageButton>(R.id.profile5)
-        val profileUsername = findViewById<EditText>(R.id.set_username)
+        val profileUsername : EditText= findViewById(R.id.set_username)
         val profilePw = findViewById<EditText>(R.id.set_pw)
         val profilePwCh = findViewById<EditText>(R.id.set_pwch)
         val regBtn = findViewById<Button>(R.id.regBtn)
@@ -83,59 +84,9 @@ class SettingActivity : AppCompatActivity() {
                         builder2.setPositiveButton("확인",null)
                         builder2.show()
                     }
-
-                    /*delFirestorePosts(Firebase.auth.currentUser?.uid)
-                    delAuth() */
-
-
                 }
                 builder.show()
-            } /*
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("회원탈퇴")
-            builder.setMessage("탈퇴하시겠습니까? 기존 저장된 정보와 글이 모두 삭제됩니다.")
-            builder.setNegativeButton("취소", null)
-            builder.setPositiveButton("확인") { _: DialogInterface, _: Int ->
-
-                //db.collection("cities").document("DC")
-                //        .delete()
-
-                val db = Firebase.firestore
-                val userUid : String? = Firebase.auth.currentUser?.uid
-
-
-                if (userUid != null) {
-                    db.collection("users").document(userUid).delete()
-                        .addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                Firebase.auth.signOut()
-                                val builder1 = AlertDialog.Builder(this)
-                                builder1.setTitle("회원탈퇴 완료")
-                                builder1.setMessage("회원탈퇴 되었습니다. 이용해주셔서 감사합니다.")
-                                builder1.setPositiveButton("확인") { _: DialogInterface, _: Int ->
-                                    startActivity(
-                                        Intent(baseContext, LoginActivity::class.java))
-                                }
-                                builder1.show()
-                            }
-                        }
-                }
-
-                /*user.delete()
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            val builder = AlertDialog.Builder(this)
-                            builder.setTitle("회원탈퇴 완료")
-                            builder.setMessage("회원탈퇴 되었습니다. 이용해주셔서 감사합니다.")
-                            builder.setPositiveButton("확인") { _: DialogInterface, _: Int ->
-                                startActivity(Intent(this, LoginActivity::class.java))
-                            }
-                            builder.show()
-                        }
-                    }*/
-
             }
-            builder.show() */
         }
 
         profileImageButton1.setOnClickListener {
@@ -236,7 +187,6 @@ class SettingActivity : AppCompatActivity() {
                 for(doc in docs) {
                     fsDb.collection("posts").document(doc.data["uid"].toString()).delete().addOnSuccessListener {
                         cnt += 1
-                        Log.d(">>>",cnt.toString() + docs.size().toString())
                         if(cnt == docs.size()) {
                             delAuth()
                         }

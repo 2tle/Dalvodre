@@ -1,6 +1,7 @@
 package com.example.today_kotlin.ui.community
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.today_kotlin.CommunityAdapter
 import com.example.today_kotlin.CommunityData
 import com.example.today_kotlin.R
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.util.*
+import kotlin.collections.ArrayList
 
 @Suppress("UNCHECKED_CAST")
 class CommunityFragment : Fragment() {
@@ -31,9 +35,11 @@ class CommunityFragment : Fragment() {
         recycler.adapter = communityAdapter1
         val list1 = mutableListOf<CommunityData>()
         val db = Firebase.firestore
-        val docRef = db.collection("posts")
+        val docRef = db.collection("posts").orderBy("date", Query.Direction.DESCENDING)
         docRef.get().addOnSuccessListener { result ->
+
             list1.apply {
+                result.sortedByDescending { it.data["date"] as String }
                 for(document in result) {
                     val doc = document.data
                     add(CommunityData(Integer.parseInt(doc?.get("backgroundType").toString()), doc?.get("date") as String, doc?.get("name") as String,
