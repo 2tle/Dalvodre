@@ -4,7 +4,8 @@
 Dalvodre is an app that gives users random sentenses every day to solve the their problems.
 
 ## 🏆 Awards
-2021 선린인터넷고등학교 모바일콘텐츠경진대회 본선 (2021 Sunrin Internet High School Mobile Content Competition)
+2021 선린인터넷고등학교 모바일콘텐츠경진대회 생활디자인부문 동상 <br />
+(2021 Sunrin Internet High School Mobile Content Competition)
 
 ## 🙏 Team Members
 [ Jeong-in Lee ](https://github.com/Jeongin205) [ Leader ] <br />
